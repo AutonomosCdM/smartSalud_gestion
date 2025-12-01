@@ -35,12 +35,11 @@ ENV PATH=/root/.local/bin:$PATH \
     PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1
 
-# Health check
-HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-    CMD curl -f http://localhost:8100/health || exit 1
+# Default port (Railway overrides via PORT env var)
+ENV PORT=8100
 
 # Expose port
-EXPOSE 8100
+EXPOSE ${PORT}
 
-# Run FastAPI server
-CMD ["uvicorn", "rag.api:app", "--host", "0.0.0.0", "--port", "8100"]
+# Run FastAPI server (uses PORT from environment)
+CMD uvicorn rag.api:app --host 0.0.0.0 --port ${PORT}
