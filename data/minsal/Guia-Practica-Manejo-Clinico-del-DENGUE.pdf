@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9">
+<link rel="stylesheet" href="https://diprece.minsal.cl/wp-content/themes/gobcl-wp-master-unidad/css/ie.css">
+<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+	<meta name="google-site-verification" content="pNwF4cH4pUR6Equ1lKLVxNCSC7sC1zE59NngJ_ykQfk" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-65722997-1"></script>	
+	
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZDDD1EK271"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZDDD1EK271');
+</script>
+	
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-65722997-1');
+</script>
+<!--Microsoft-->
+	<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "mg1xpoirjc");
+</script>
+<!--Microsoft-->
+<!-- INICIO - Global site tag (gtag.js) - Google Analytics G4-->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZDDD1EK271"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-ZDDD1EK271');
+        </script>
+<!-- FIN - Global site tag (gtag.js) - Google Analytics G4-->
+<!--segumiento de descargas-->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('a[href$=".pdf"], a[href$=".docx"], a[href$=".xlsx"]').forEach(link => {
+        link.addEventListener('click', function(event) {
+            var fileUrl = this.href;
+            // Enviar evento a Google Analytics
+            gtag('event', 'download', {
+                'event_category': 'Documentos',
+                'event_label': fileUrl,
+                'transport_type': 'beacon'
+            });
+            // Opcional: Retraso para asegurar que el evento se envíe antes de la navegación
+            if (!link.target || link.target.toLowerCase() !== "_blank") {
+                event.preventDefault();
+                setTimeout(function() {
+                    window.location.href = fileUrl;
+                }, 800); // Retraso de 800 ms
+            }
+        });
+    });
+});
+</script>
+
+<!--seguimineto de descargas-->
+	
+		<!--test seo-->
+		<html lang="es-CL" xml:lang="es-CL">
+		<meta name="geo.region" content="CL" />
+        <meta name="geo.placename" content="Santiago de Chile" />
+        <meta name="geo.position" content="-33.45;-70.666667" />
+        <meta name="ICBM" content="-33.45, -70.666667" />
+		<meta name="keywords" content="Salud, Pública, Prevención, Control, Enfermedades, Programas, Planes, Chile, MINSAL, Normativo, Regulatorio" />
+		<meta name="description" content="División de Prevención y Control de Enfermedades - Sub Secretaria de Salud Pública - Ministerio de Salud Chile" />
+<meta property="og:title" content="División de Prevención y Control de Enfermedades" />
+<meta property="og:description" content="información para Equipos de Salud y Comunidad en temas de prevención y control de enfermedades" />
+<meta property="og:image" content="https://diprece.minsal.cl/wp-content/uploads/2023/02/cropped-BANNER-Minsal-2023.png" />
+<meta property="og:url" content="https://diprece.minsal.cl/" />
+<meta name="twitter:card" content="summary_large_image">
+		<!--fin test seo-->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>
+        No encontrado - DIPRECE        </title>
+		<!--DIPRECE -->
+        <link rel="stylesheet" href="https://diprece.minsal.cl/wp-content/themes/gobcl-wp-master-unidad/css/diprece.css">		
+        <script type="text/javascript" src="https://diprece.minsal.cl/wrdprss_minsal/wp-content/themes/gobcl-wp-master-unidad/js/tabs_old.js"></script>
+		<!--DIPRECE-->
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://diprece.minsal.cl/wp-content/themes/gobcl-wp-master-unidad/css/main.css">
+        <link rel="shortcut icon" type="image/x-icon" href="https://diprece.minsal.cl/wp-content/themes/gobcl-wp-master-unidad/img/gob_favicon.ico"  />
+
+        <!-- Facebook -->
+
+
+
+<!-- ToDo: Twitter -->
+        <link rel='dns-prefetch' href='//ajax.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/diprece.minsal.cl\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.5.1"}};
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,8205,55356,57212],[55357,56424,8203,55356,57212])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='wp-block-library-css'  href='https://diprece.minsal.cl/wp-includes/css/dist/block-library/style.min.css?ver=5.5.1' type='text/css' media='all' />
+<link rel='stylesheet' id='responsive-lightbox-prettyphoto-css'  href='https://diprece.minsal.cl/wp-content/plugins/responsive-lightbox/assets/prettyphoto/prettyPhoto.min.css?ver=2.4.3' type='text/css' media='all' />
+<link rel='stylesheet' id='UserAccessManagerLoginForm-css'  href='https://diprece.minsal.cl/wp-content/plugins/user-access-manager/assets/css/uamLoginForm.css?ver=2.1.12' type='text/css' media='screen' />
+<link rel='stylesheet' id='wp-show-posts-css'  href='https://diprece.minsal.cl/wp-content/plugins/wp-show-posts/css/wp-show-posts-min.css?ver=1.1.4' type='text/css' media='all' />
+<link rel='stylesheet' id='tablepress-default-css'  href='https://diprece.minsal.cl/wp-content/tablepress-combined.min.css?ver=6' type='text/css' media='all' />
+<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js?ver=5.5.1' id='jquery-js'></script>
+<script type='text/javascript' src='https://diprece.minsal.cl/wp-content/plugins/responsive-lightbox/assets/infinitescroll/infinite-scroll.pkgd.min.js?ver=5.5.1' id='responsive-lightbox-infinite-scroll-js'></script>
+<link rel="https://api.w.org/" href="https://diprece.minsal.cl/wp-json/" /><meta name="redi-version" content="1.2.6" /><style class="wpcode-css-snippet">:root {
+  --primary: #0f69b4;
+  --primary-dark: #006fb3;
+}
+
+/* Card resumen */
+#guides-redesign .card-summary {
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  margin-bottom: 1rem;
+}
+#guides-redesign .card-summary .btn-group,
+#guides-redesign .card-summary small,
+#guides-redesign .card-summary .badge {
+  margin-left: .5rem;
+}
+
+/* Offcanvas */
+.offcanvas-body {
+  background: #f0f8ff;
+}
+
+/* Nav-pills scrollable */
+.nav-pills-wrapper {
+  position: sticky; top: 0; background: #fff; z-index: 100;
+  padding: .5rem 0; box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.nav-pills { display:flex; gap:.5rem; overflow-x:auto; white-space:nowrap; }
+.nav-pills .nav-link {
+  flex:1 0 auto; padding:.5rem 1rem; border-radius:.25rem;
+  color: var(--primary) !important; transition:.3s;
+}
+.nav-pills .nav-link.active {
+  background: var(--primary-dark) !important; color: #fff !important;
+}
+
+/* Tabla */
+#tableContainer .dataTable thead th {
+  position: sticky; top: 0; background: var(--primary);
+  color: #fff; z-index: 2;
+}
+#tableContainer .dataTable tbody tr:nth-child(even) {
+  background: #f9f9f9;
+}
+#tableContainer .dataTable tbody tr:hover {
+  background: #e6f7ff;
+}
+
+/* Tarjetas */
+#cardsContainer .card {
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+#cardsContainer .card-body {
+  display:flex; flex-direction:column; justify-content:space-between;
+}
+
+/* Toggle */
+#toggleView { display:block; margin-bottom:1rem; }
+</style><link rel="icon" href="https://diprece.minsal.cl/wp-content/uploads/2020/05/cropped-LogosDIPRECEcovid-09-32x32.png" sizes="32x32" />
+<link rel="icon" href="https://diprece.minsal.cl/wp-content/uploads/2020/05/cropped-LogosDIPRECEcovid-09-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://diprece.minsal.cl/wp-content/uploads/2020/05/cropped-LogosDIPRECEcovid-09-180x180.png" />
+<meta name="msapplication-TileImage" content="https://diprece.minsal.cl/wp-content/uploads/2020/05/cropped-LogosDIPRECEcovid-09-270x270.png" />
+		<style type="text/css" id="wp-custom-css">
+			
+		</style>
+		
+</head>
+    <body class="error404">
+
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          // reemplazar ID_DEL_APP_DE_FACEBOOK
+          js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&appId=ID_DEL_APP_DE_FACEBOOK&version=v2.0";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
+    <div id="menu-movil">
+        <div class="wrap">
+            <nav id="menu-principal">
+                <!-- Menu Principal - Móvil -->
+                <ul id="menu-main-menu" class="menu-main"><li id="menu-item-8335" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-8335"><a href="http://diprece.minsal.cl"><i class="fas fa-home fa-lg"></i></a></li>
+<li id="menu-item-177" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-177"><a href="#">Conózcanos</a>
+<ul class="sub-menu">
+	<li id="menu-item-8143" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8143"><a href="https://diprece.minsal.cl/conozcanos/quienes-somos/">DIPRECE</a></li>
+	<li id="menu-item-8145" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8145"><a href="https://diprece.minsal.cl/conozcanos/departamentos/">Jefaturas DIPRECE</a></li>
+</ul>
+</li>
+<li id="menu-item-8321" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-8321"><a href="#">Informamos</a>
+<ul class="sub-menu">
+	<li id="menu-item-15862" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15862"><a href="https://diprece.minsal.cl/temas-de-salud/orden-alfabetico/">Temas por orden alfabético</a></li>
+	<li id="menu-item-49429" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-49429"><a href="https://diprece.minsal.cl/documentos-de-apoyo-covid-19/">Documentos de apoyo COVID-19</a></li>
+	<li id="menu-item-8318" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8318"><a href="https://diprece.minsal.cl/category/noticias/">Noticias</a></li>
+	<li id="menu-item-11624" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-11624"><a href="https://diprece.minsal.cl/category/videos-educativos/">Videos Educativos</a></li>
+	<li id="menu-item-23647" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-23647"><a href="https://diprece.minsal.cl/temas-de-salud/orden-alfabetico/guias-clinicas-no-ges/">Guías Clínicas No-GES</a></li>
+	<li id="menu-item-49463" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-49463"><a href="https://diprece.minsal.cl/category/documentos-en-consulta-publica/">Documentos en consulta pública</a></li>
+</ul>
+</li>
+<li id="menu-item-9398" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-9398"><a href="#">Temas de Salud</a>
+<ul class="sub-menu">
+	<li id="menu-item-8289" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8289"><a href="https://diprece.minsal.cl/programas-de-salud/programa-vih-sida-e-its/">VIH/SIDA e ITS</a></li>
+	<li id="menu-item-56441" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-56441"><a href="https://diprece.minsal.cl/salud-mental/">Salud Mental</a></li>
+	<li id="menu-item-61966" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-61966"><a href="https://redcronicas.minsal.cl/temas-de-salud/cancer-2/">Cáncer y Otros Tumores</a></li>
+	<li id="menu-item-8359" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8359"><a href="https://diprece.minsal.cl/programas-de-salud/programas-enfermedades-transmisibles/tuberculosis/">Tuberculosis</a></li>
+	<li id="menu-item-8150" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8150"><a href="https://diprece.minsal.cl/programas-de-salud/salud-bucal/">Salud Bucal</a></li>
+	<li id="menu-item-10126" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10126"><a href="https://diprece.minsal.cl/programas-de-salud/programas-enfermedades-transmisibles/hepatitis-b-y-c/">Hepatitis B y C</a></li>
+	<li id="menu-item-40480" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-40480"><a href="https://diprece.minsal.cl/programas-de-salud/programas-enfermedades-transmisibles/enfermedades-transmitidas-por-mosquitos/">Enf. Transmitidas por mosquitos</a></li>
+	<li id="menu-item-8538" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8538"><a href="https://diprece.minsal.cl/programas-de-salud/programas-enfermedades-transmisibles/dengue-chikungunya-otras/">Hanta / otras</a></li>
+	<li id="menu-item-8586" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8586"><a href="https://diprece.minsal.cl/programas-de-salud/programas-enfermedades-transmisibles/chagas/">Enfermedad de Chagas</a></li>
+	<li id="menu-item-50730" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-50730"><a href="https://diprece.minsal.cl/programas-de-salud/programas-enfermedades-transmisibles/hidatidosis-equinococosis-quistica/">Hidatidosis/ Equinococosis Quística</a></li>
+	<li id="menu-item-8536" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8536"><a href="https://diprece.minsal.cl/programas-de-salud/programas-enfermedades-transmisibles/enfermedades-respiratorias/">Enfermedades Respiratorias Agudas</a></li>
+</ul>
+</li>
+<li id="menu-item-55832" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-55832"><a href="https://diprece.minsal.cl/programas-de-salud/programas-ciclo-vital/">Curso de Vida</a>
+<ul class="sub-menu">
+	<li id="menu-item-50607" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-50607"><a href="https://diprece.minsal.cl/programas-de-salud/programas-ciclo-vital/lactancia-materna/">Lactancia Materna</a></li>
+	<li id="menu-item-8148" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8148"><a href="https://diprece.minsal.cl/programas-de-salud/programas-ciclo-vital/programa-nacional-de-salud-de-la-infancia/">Salud de la Infancia</a></li>
+	<li id="menu-item-8149" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8149"><a href="https://diprece.minsal.cl/programas-de-salud/programas-ciclo-vital/programa-salud-integral-adolescentes-y-jovenes/">Salud Integral Adolescentes y Jóvenes</a></li>
+	<li id="menu-item-21102" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-21102"><a href="https://diprece.minsal.cl/programas-de-salud/programas-ciclo-vital/programa-nacional-de-salud-de-la-mujer/">Salud de la Mujer</a></li>
+	<li id="menu-item-53555" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-53555"><a href="https://diprece.minsal.cl/programas-de-salud/programas-ciclo-vital/programa-nacional-de-las-personas-adulto-mayor/">Salud de las Personas Mayores</a></li>
+	<li id="menu-item-11770" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11770"><a href="https://diprece.minsal.cl/programas-de-salud/violencia/">Prevención de Violencias</a></li>
+	<li id="menu-item-51087" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-51087"><a href="https://diprece.minsal.cl/programas-de-salud/programas-ciclo-vital/salud-auditiva/">Salud Auditiva</a></li>
+	<li id="menu-item-59533" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-59533"><a href="https://diprece.minsal.cl/ley-cuidados-paliativos-universales/">Cuidados Paliativos Universales</a></li>
+	<li id="menu-item-59534" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-59534"><a href="https://diprece.minsal.cl/enfermedades-poco-frecuentes/">Enf. Poco Frecuentes</a></li>
+</ul>
+</li>
+<li id="menu-item-8569" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8569"><a href="https://diprece.minsal.cl/le-informamos/auge/acceso-guias-clinicas/">Guías Clínicas AUGE 87</a></li>
+</ul>            </nav>
+        </div>
+    </div>
+
+    <header style="background-image:url('https://diprece.minsal.cl/wp-content/uploads/2025/01/cropped-banner-cabecera_GES-1920x1440-1.png')">
+        <div class="wrap">
+
+        	<h1 id="logo-main">
+                <a href="/">
+                    <img src="https://diprece.minsal.cl/wp-content/uploads/2024/03/MINSAL-100anos.png" alt="logo Ministerio de Salud">
+                </a>
+            </h1>
+<!--script type="text/javascript" --editado por error de modernizacion api-- >
+window.____aParams = {"gobabierto":"1","buscadore":"1","icons":"1"};
+(function() {
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+})();
+</script-->
+            <nav id="menu-principal">
+            <!-- Menu Principal -->
+                <ul id="menu-main-menu" class="menu-main"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-8335"><a href="http://diprece.minsal.cl"><i class="fas fa-home fa-lg"></i></a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-177"><a href="#">Conózcanos</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8143"><a href="https://diprece.minsal.cl/conozcanos/quienes-somos/">DIPRECE</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8145"><a href="https://diprece.minsal.cl/conozcanos/departamentos/">Jefaturas DIPRECE</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-8321"><a href="#">Informamos</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15862"><a href="https://diprece.minsal.cl/temas-de-salud/orden-alfabetico/">Temas por orden alfabético</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-49429"><a href="https://diprece.minsal.cl/documentos-de-apoyo-covid-19/">Documentos de apoyo COVID-19</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8318"><a href="https://diprece.minsal.cl/category/noticias/">Noticias</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-11624"><a href="https://diprece.minsal.cl/category/videos-educativos/">Videos Educativos</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-23647"><a href="https://diprece.minsal.cl/temas-de-salud/orden-alfabetico/guias-clinicas-no-ges/">Guías Clínicas No-GES</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-49463"><a href="https://diprece.minsal.cl/category/documentos-en-consulta-publica/">Documentos en consulta pública</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-9398"><a href="#">Temas de Salud</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8289"><a href="https://diprece.minsal.cl/programas-de-salud/programa-vih-sida-e-its/">VIH/SIDA e ITS</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-56441"><a href="https://diprece.minsal.cl/salud-mental/">Salud Mental</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-61966"><a href="https://redcronicas.minsal.cl/temas-de-salud/cancer-2/">Cáncer y Otros Tumores</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8359"><a href="https://diprece.minsal.cl/programas-de-salud/programas-enfermedades-transmisibles/tuberculosis/">Tuberculosis</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8150"><a href="https://diprece.minsal.cl/programas-de-salud/salud-bucal/">Salud Bucal</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10126"><a href="https://diprece.minsal.cl/programas-de-salud/programas-enfermedades-transmisibles/hepatitis-b-y-c/">Hepatitis B y C</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-40480"><a href="https://diprece.minsal.cl/programas-de-salud/programas-enfermedades-transmisibles/enfermedades-transmitidas-por-mosquitos/">Enf. Transmitidas por mosquitos</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8538"><a href="https://diprece.minsal.cl/programas-de-salud/programas-enfermedades-transmisibles/dengue-chikungunya-otras/">Hanta / otras</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8586"><a href="https://diprece.minsal.cl/programas-de-salud/programas-enfermedades-transmisibles/chagas/">Enfermedad de Chagas</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-50730"><a href="https://diprece.minsal.cl/programas-de-salud/programas-enfermedades-transmisibles/hidatidosis-equinococosis-quistica/">Hidatidosis/ Equinococosis Quística</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8536"><a href="https://diprece.minsal.cl/programas-de-salud/programas-enfermedades-transmisibles/enfermedades-respiratorias/">Enfermedades Respiratorias Agudas</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-55832"><a href="https://diprece.minsal.cl/programas-de-salud/programas-ciclo-vital/">Curso de Vida</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-50607"><a href="https://diprece.minsal.cl/programas-de-salud/programas-ciclo-vital/lactancia-materna/">Lactancia Materna</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8148"><a href="https://diprece.minsal.cl/programas-de-salud/programas-ciclo-vital/programa-nacional-de-salud-de-la-infancia/">Salud de la Infancia</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8149"><a href="https://diprece.minsal.cl/programas-de-salud/programas-ciclo-vital/programa-salud-integral-adolescentes-y-jovenes/">Salud Integral Adolescentes y Jóvenes</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-21102"><a href="https://diprece.minsal.cl/programas-de-salud/programas-ciclo-vital/programa-nacional-de-salud-de-la-mujer/">Salud de la Mujer</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-53555"><a href="https://diprece.minsal.cl/programas-de-salud/programas-ciclo-vital/programa-nacional-de-las-personas-adulto-mayor/">Salud de las Personas Mayores</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11770"><a href="https://diprece.minsal.cl/programas-de-salud/violencia/">Prevención de Violencias</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-51087"><a href="https://diprece.minsal.cl/programas-de-salud/programas-ciclo-vital/salud-auditiva/">Salud Auditiva</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-59533"><a href="https://diprece.minsal.cl/ley-cuidados-paliativos-universales/">Cuidados Paliativos Universales</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-59534"><a href="https://diprece.minsal.cl/enfermedades-poco-frecuentes/">Enf. Poco Frecuentes</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8569"><a href="https://diprece.minsal.cl/le-informamos/auge/acceso-guias-clinicas/">Guías Clínicas AUGE 87</a></li>
+</ul>            </nav>
+
+
+            <a href="#" id="menu-movil-trigger">Menú Principal</a>
+
+        </div>
+
+    </header>
+
+	<div id="content">
+
+		<div class="wrap">
+		
+			<div id="main">
+
+				<h5 class="titulo-seccion">Error 404</h5>
+
+				<div class="post">
+					<div class="texto">
+					<h3 class="title">La página que buscas no existe</h3>
+						<div class="contenido">
+							<img src="https://diprece.minsal.cl/wp-content/uploads/2023/10/404.png" />
+							<p style="font-size:22px; text-align:center;">Intenta <a href="https://diprece.minsal.cl"> volviendo al <i class="fa-solid fa-house fa-beat"></i> home</a>, o utiliza el buscador.</p>
+							
+						</div>
+					</div>
+				</div>
+
+				<div class="buscar clearfix">
+	<form action="" method="get">
+		<label for="query">Busca en el sitio</label>
+		<input type="text" id="query" name="s"  placeholder=" ">
+		<input type="submit" id="boton" value="Enviar">
+	</form>
+</div>
+			</div>
+
+			<!-- Sidebar -->
+
+			<div id="sidebar">
+<div class="buscar clearfix">
+	<form action="" method="get">
+		<label for="query">Busca en el sitio</label>
+		<input type="text" id="query" name="s"  placeholder=" ">
+		<input type="submit" id="boton" value="Enviar">
+	</form>
+</div>    
+
+    <div class="widgets-sidebar">
+
+        <div class="widget_text widget"><h5 class="titulo-seccion">Buscador</h5><div class="clearfix"></div><div class="textwidget custom-html-widget"><script>
+  (function() {
+    var cx = '018141868008021088873:b76mw5lz6vo';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>	
+</div></div><div class="widget_text widget"><div class="textwidget custom-html-widget"><!-- Ejemplo completo con todos los banners -->
+<style>
+  .banner-index {
+    border-radius: 0px 12px 12px 0px;
+    border-left: 8px solid #70D1D0 !important;
+    width: 100%;
+    background-color: #fff;
+    border: none;
+    color: #475156;
+    padding: 10px !important;
+    text-decoration: none;
+    font-size: 18px;
+    margin-bottom: 5px;
+    
+    /* Activamos flexbox para alinear ícono y texto en una sola fila */
+    display: flex; 
+    align-items: center;
+  }
+
+  .banner-index:hover {
+    box-shadow: 0px 15px 26px rgba(0, 0, 0, 0.50);
+    transition: all 0.3s ease-in;
+  }
+
+  /* Clase para el ícono: margen y tamaño */
+  .icono-banner {
+		color:#fff!important;
+    margin-right: 10px;
+    font-size: 1.4em; /* Ajusta según prefieras */
+  }
+
+  /* Contenedor de texto */
+  .texto-banner {
+    display: block; 
+  }
+
+  /* Líneas de texto dentro del banner */
+  .linea-chica {
+    font-size: 14px !important;
+  }
+  .linea-grande {
+    font-size: 20px;
+  }
+</style>
+
+<div style="margin-bottom: 20px;">
+  <strong>Busca tu centro de salud más cercano:</strong>
+</div>
+
+<!-- Banner 1: Puntos Nirsevimab - Virus Sincicial
+<a class="banner-index" href="https://diprece.minsal.cl/wp-content/uploads/2024/05/vacunatorios-nirsevimab.html"
+   style="background-color: #684974; color: #FFF; border-left: 8px solid #5b3070 !important;">
+  <i class="fa-solid fa-shield-virus icono-banner"></i>
+
+  <span class="texto-banner">
+    <span class="linea-chica">Puntos Nirsevimab</span><br/>
+    <span class="linea-grande">Virus Sincicial</span>
+  </span>
+</a> -->
+
+<!-- Banner 2: Puntos de Vacunación - Influenza/Covid-19 -->
+<a class="banner-index" href="https://diprece.minsal.cl/wp-content/uploads/2024/05/vacunatorios-influenza-covid-19.html"
+   style="background-color: #006bb7; color: #FFF; border-left: 8px solid #00497a !important;">
+  <i class="fa-solid fa-syringe icono-banner"></i>
+  <span class="texto-banner">
+    <span class="linea-chica">Puntos de Vacunación</span><br/>
+    <span class="linea-grande">Influenza/Covid-19</span>
+  </span>
+</a>
+<!-- Banner 2: Puntos de Vacunación - Influenza/Covid-19 -->
+<a class="banner-index" href="https://diprece.minsal.cl/wp-content/uploads/2024/05/vacunatorios-virus-papiloma-humano.html"
+   style="background-color: #1a8b88; color: #FFF; border-left: 8px solid #00497a !important;">
+  <i class="fa-solid fa-syringe icono-banner"></i>
+  <span class="texto-banner">
+    <span class="linea-chica">Puntos de Vacunación</span><br/>
+    <span class="linea-grande">Virus Papiloma Humano</span>
+  </span>
+</a>
+<!-- Banner 3: Puntos de Vacunación - Mpox -->
+<a class="banner-index" href="https://www.minsal.cl/vacunacion-gratuita/"
+   style="background-color: #a04992; color: #FFF; border-left: 8px solid #5b3070 !important;">
+  <i class="fa-solid fa-syringe icono-banner"></i>
+  <span class="texto-banner">
+    <span class="linea-chica">Puntos de Vacunación</span><br/>
+    <span class="linea-grande">Mpox</span>
+  </span>
+</a>
+</div></div><div class="widget_text widget"><div class="textwidget custom-html-widget"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+	.texto{
+		display:block;
+		float:left!important;
+		color:#475156;
+		/*font-size:12px;*/
+	}
+	.texto:hover,.icono-banner:hover{color:#fff;}
+ .icono-banner{
+	 /*text-align: left; */
+	 padding:15px;
+	 display:block!important;
+	 float:left!important;
+	 margin-right:10px;
+	 color:#475156;
+	 }
+ .banner-index {
+	 border-radius: 0px 12px 12px 0px;
+	 border-left: 8px solid #70D1D0!important;
+ 	 width:100%;
+   background-color:#fff;
+   border: none;
+   color: #475156;
+   padding:10px!important;
+   /*text-align: right;*/
+   text-decoration: none;
+   display: inline-block;
+   font-size: 18px;
+ 	margin-bottom:5px;
+ 	}
+ 	.banner-index:hover {
+   /*background-color:#0f69b4;
+   color: white;*/
+	 box-shadow: 0px 15px 26px rgba(0, 0, 0, 0.50);
+   transition: all 0.3s ease-in;
+ }
+</style>
+<!--a class="banner-index" href="https://diprece.minsal.cl/curso-medicos-edf-2025/" target="_blank"><i class="fa-solid fa-chalkboard-user fa-3x icono-banner" style="color: #6c3878!important;"></i><span style="display:-webkit-box; display:block; font-size:14px; padding:12px;">Curso 2025: Enf. Transmisibles – Médicos en Destinación y Formación
+</span></a>
+<br/-->
+<a class="banner-index" href="https://diprece.minsal.cl/campana-de-verano-repositorio-de-documentos/" target="_blank" style="background-color:#f2956e; color:#FFF;  border-left: 8px solid #db4a48!important;" rel="noopener noreferrer"><img class="icono-banner" src="https://diprece.minsal.cl/wp-content/uploads/2024/11/senor-campana-de-verano-_logo_png.png" alt="Girl in a jacket" width="30%"><span style="display:-webkit-box; display:block; font-size:20px; padding:10px;">Campaña verano: Repositorio de documentos</span></a>
+<a class="banner-index" href="https://diprece.minsal.cl/fondo-nacional-del-cancer-fnc/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-ribbon fa-3x icono-banner" style="color: #6c3878!important;"></i><span style="display:-webkit-box; display:block; font-size:18px; padding:12px;">
+Fondo Nacional del Cáncer (FNC)</span></a>
+<a class="banner-index" href="https://zcmmwffp1ps.typeform.com/to/tR0kF7wn?typeform-source=l.instagram.com" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-magnifying-glass fa-3x icono-banner" style="color: #6c3878!important;"></i><span style="display:-webkit-box; display:block; font-size:14px; padding:10px;">Estudio del Perfil Epidemiológico de Mujeres con Endometriosis</span></a>
+<a class="banner-index" href="https://diprece.minsal.cl/temas-de-salud/orden-alfabetico/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-down-a-z fa-3x icono-banner" style="color: #6c3878!important;"></i><span style="display:-webkit-box; display:block; font-size:20px; padding:10px;">Temas por Orden Alfabético</span></a>
+<a class="banner-index" href="https://diprece.minsal.cl/wp-content/uploads/2024/03/autotest-vih.html" target="_blank" rel="noopener noreferrer"><!--i class="fa-solid fa-map-location-dot fa-3x icono-banner" style="color: #6c3878;"></i-->
+	<img class="icono-banner" src="https://diprece.minsal.cl/wp-content/uploads/2024/03/map_puntos-entrega-autotest-vih.png" alt="Girl in a jacket" width="30%"><span style="display:-webkit-box; display:block; font-size:18px; padding:15px;">Puntos de entrega del Autotest para VIH</span></a>
+<br/>
+<a class="banner-index" href="https://diprece.minsal.cl/capsulas-de-autoaprendizaje-sobre-los-cuidados-de-la-salud-mental-en-la-gestion-de-riesgos-de-desastres/" target="_blank" rel="noopener noreferrer"><img class="icono-banner" src="https://diprece.minsal.cl/wp-content/uploads/2024/02/online-profile_5057686.png" alt="Girl in a jacket" width="30%"><span style="display:-webkit-box; display:block; font-size:14px; padding:8px;">cápsulas sobre los cuidados de la salud mental en la gestión de riesgos de desastres</span></a>
+<br/>
+<a class="banner-index" href="https://diprece.minsal.cl/wp-content/uploads/2024/01/uso-condon-interno.pdf" target="_blank" rel="noopener noreferrer"><img class="icono-banner" src="https://diprece.minsal.cl/wp-content/uploads/2024/01/condon-interno.png" alt="Girl in a jacket" width="30%"><span style="display:-webkit-box; display:block; font-size:22px; padding:10px;">¿Cómo usar el condón interno?</span></a>
+<br/>
+<a class="banner-index" href="https://diprece.minsal.cl/wp-content/uploads/2024/01/uso-condon-externo.pdf" target="_blank" rel="noopener noreferrer"><img class="icono-banner" src="https://diprece.minsal.cl/wp-content/uploads/2024/01/condon-externo.png" alt="Girl in a jacket" width="30%"><span style="display:-webkit-box; display:block; font-size:22px; padding:10px;">¿Cómo usar el condón externo?</span></a>
+<br/>
+<a class="banner-index" href="https://diprece.minsal.cl/transferencias-tecnicas-diprece/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-video fa-3x icono-banner" style="color: #6c3878!important; "></i><span style="display:-webkit-box; display:block; font-size:18px; padding:15px;"> Transferencias Técnicas DIPRECE</span></a>
+<br/>
+
+</div></div><div class="widget_text widget"><div class="textwidget custom-html-widget"><!--a href="https://diprece.minsal.cl/programas-de-salud/programa-vih-sida-e-its/informacion-a-la-comunidad-vih-sida-e-its/" target="_blank"><img src="https://diprece.minsal.cl/wp-content/uploads/2023/12/Banner-Lateral-320x100_1.png" alt=""></a>
+<br/>
+<a href="https://diprece.minsal.cl/demencia/" target="_blank" rel="noopener noreferrer"><img src="https://diprece.minsal.cl/wp-content/uploads/2023/10/Banner-Lateral-320x100_05.png" alt=""></a>
+<br/>
+<!--a href="https://enfermedadesrespiratorias.minsal.cl/" target="_blank"><img src="https://www.minsal.cl/wp-content/uploads/2023/06/banner-lateral_campan%CC%83a-invierno-2023_mascarilla.png" alt=""></a>
+<br/>
+<a href="https://www.minsal.cl/estrategia-campana-de-invierno/" target="_blank" rel="noopener noreferrer"><img style="width:100%;" src="https://www.minsal.cl/wp-content/uploads/2023/06/banner-lateral_estrategia-campan%CC%83a-de-invierno.png" alt="banner de acceso a recetario"></a>
+<br/-->
+<!--a href="https://diprece.minsal.cl/material-educativo-ciclo-vital/" target="_blank"><img src="https://diprece.minsal.cl/wp-content/uploads/2023/06/banner-recursos-ciclo-vital.png" alt=""></a>
+<!--a href="https://www.paho.org/es/chile/lanzamiento-plan-ram-2021" target="_blank"><img src="https://diprece.minsal.cl/wp-content/uploads/2021/10/Banner_RAM2021.png" alt=""></a-->
+<!--a href="https://www.minsal.cl/informacion-tecnica-vacunas-covid-19/" target="_blank"><img src="https://diprece.minsal.cl/wp-content/uploads/2020/12/banner-información-vacunas-covid-19_320x100-1.png" alt=""></a>
+<br/>
+<!--a href="https://diprece.minsal.cl/temas-de-salud/temas-de-salud/guias-clinicas-no-ges/guias-clinicas-no-ges-enfermedades-transmisibles/covid-19/recomendaciones/" target="_blank"><img src="https://diprece.minsal.cl/wp-content/uploads/2020/12/gpc-covid-1.png" alt=""></a-->
+<!--br/>
+<a href="https://www.gob.cl/yomevacuno/" target="_blank" rel="noopener noreferrer"><img src="https://diprece.minsal.cl/wp-content/uploads/2021/02/banner-lateral_yo-me-vacuno.png" alt=""></a-->
+<br/>
+<!--a href="https://diprece.minsal.cl/wp-content/uploads/2023/12/2023.12.04_AFICHE_Violencia-de-pareja-adolescentes-y-jovenes.pdf" target="_blank"><img src="https://diprece.minsal.cl/wp-content/uploads/2023/12/violencia-en-las-relaciones-320x100-1.png" alt=""></a--></div></div><div class="widget_text widget"><h5 class="titulo-seccion">Repositorios de datos:</h5><div class="clearfix"></div><div class="textwidget custom-html-widget"><style>
+	.texto{
+		display:block;
+		float:left!important;
+	}
+ .icono{
+	 /*text-align: left; */
+	 padding:15px;
+	 display:block!important;
+	 float:left!important;
+	 margin-right:10px;
+	 color:#FFFDB2;
+	 }
+ .button {
+	 border-radius: 0px 12px 12px 0px;
+	 border-left: 8px solid #83A1C3!important;
+ 	 width:100%;
+   background-color:#546C8C;
+   border: none;
+   color: white;
+   padding:10px!important;
+   /*text-align: right;*/
+   text-decoration: none;
+   display: inline-block;
+   font-size: 16px;
+ 	margin-top:5px;
+ 	}
+ 	.button:hover {
+   background-color:#008CBA;
+   color: white;
+	 box-shadow: 0px 15px 26px rgba(0, 0, 0, 0.50);
+   transition: all 0.3s ease-in;
+ }
+ </style>
+<a class="button" href="https://informesdeis.minsal.cl/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2Fa2d170a0-5281-43e8-a342-0645e9a51f12&sectionIndex=0&sso_guest=true&reportViewOnly=true&reportContextBar=false&sas-welcome=false" target="_blank" rel="noopener noreferrer"><i class="fas fa-hand-holding-medical fa-2x icono"></i><span style="margin-top: 7%; display:-webkit-box; display:block"> Salud Personas Mayores</span></a>
+<a class="button" href="https://informesdeis.minsal.cl/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F09de985b-d8d1-48df-bf54-6635389023b5&sectionIndex=0&sso_guest=true&reportViewOnly=true&reportContextBar=false&sas-welcome=false" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-heart-pulse fa-2x icono"></i><span style="margin-top: 7%; display:-webkit-box; display:block"> Salud Cardiovascular</span></a>
+<a class="button" href="https://informesdeis.minsal.cl/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F05391609-9866-4a84-9aee-4f29f59b0984&sectionIndex=0&sso_guest=true&reportViewOnly=true&reportContextBar=false&sas-welcome=false" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-children fa-2x icono"></i> Niños, niñas y adolescentes con necesidades especiales de atención en Salud</a>
+<a class="button" href="https://informesdeis.minsal.cl/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2Fad0c03ad-ee7a-4da4-bcc7-73d6e12920cf&sectionIndex=0&sso_guest=true&reportViewOnly=true&sas-welcome=false" target="_blank" rel="noopener noreferrer"><i class="fas fa-spa fa-2x icono"></i><span style="margin-top: 7%; display:-webkit-box; display:block"> Salud Mental</span> </a>
+<a class="button" href="https://informesdeis.minsal.cl/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2Ff527e572-f95c-441c-8f76-081ab5049052&sectionIndex=0&sso_guest=true&reportViewOnly=true&reportContextBar=false&sas-welcome=false" target="_blank" rel="noopener noreferrer"><i class="fas fa-chart-bar fa-2x icono"></i><span style="margin-top: 7%; display:-webkit-box; display:block"> Temática Violencia</span></a>
+<a class="button" href="https://informesdeis.minsal.cl/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F0b3119f0-db06-4f10-a9cd-61092b5790bc&sectionIndex=0&sso_guest=true&reportViewOnly=true&reportContextBar=false&sas-welcome=false" target="_blank" rel="noopener noreferrer"><i class="fas fa-users fa-2x icono"></i><span style="margin-top: 7%; display:-webkit-box; display:block"> Programa del Adolescente</span></a>
+<a class="button" href="https://informesdeis.minsal.cl/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F47cbaba3-9159-447a-b864-7be394b54eb1&sectionIndex=0&sso_guest=true&reportViewOnly=true&reportContextBar=false&sas-welcome=false" target="_blank" rel="noopener noreferrer"><i class="fas fa-globe-americas fa-2x icono"></i><span style="margin-top: 7%; display:-webkit-box; display:block">Salud población Migrante</span></a></div></div><div class="widget_text widget"><div class="textwidget custom-html-widget"><style>
+.slideshow-window {
+    background-color: #fff;
+    border: 20px solid #ededed;
+}
+</style></div></div><div class="widget_text widget"><div class="textwidget custom-html-widget"><style>
+.blue{color:#006fb3;}
+.indigo{color:#6610f2;}
+.purple{color:#63c;}
+.pink{color:#e83e8c;}
+.orange{color:#e0701e;}
+.red{color:#fe6565;}
+.yellow{color:#f2c728;}
+.green{color:#2d717c;}
+.teal{color:#20c997;}
+.cyan{color:#17a2b8;}
+.white{color:#fff;}
+.gray{color:#a8b7c7;}
+.gray-dark{color:#343a40;}
+.blue-light{color:#a8b7c7;}
+.blue-dark{color:#0a132d;}
+.orange-light{color:#ffa11b;}
+.black{color:#111;}
+.primary{color:#006fb3;}
+.secondary{color:#fe6565;}
+.success{color:#2d717c;}
+.info{color:#17a2b8;}
+.warning{color:#f2c728;}
+.danger{color:#fe6565;}
+.light{color:#f8f9fa;}
+.dark{color:#34340;}
+.tertiary{color:#0a132d;}
+.accent{color:#a8b7c7;}
+.neutral{color:#eee;}
+</style></div></div><div class="widget_text widget"><div class="textwidget custom-html-widget"><style>
+	.tablepress thead th {
+		background-color: #0f69b4!important;
+	}
+	.cycloneslider-template-default .cycloneslider-pager {
+		display:none;}
+/*.right{text-align: justify;}*/
+/*.left h4{background:#4d90d7; margin:0; font-size:180%}*/
+/*.left a{color:#ffffff; padding-left: 1em !important; margin: 0 0 0 0!important; padding: 0.5%;}*/
+/*.pagini{background-color:rgba(113, 155, 207, 0.2);border: none;-moz-border-radius: 10px;-webkit-border-radius: 10px; border-radius: 10px; padding: 1.5em; margin: 0 0 5px!important; font-size: 20px;}*/
+/*--.post-*/
+header{display:inherit!important;}
+#informacion article{width:50%;float:left }
+#informacion article h5, img{text-align: center;}
+#lis{text-align: center;}
+/*--.title{display:none;}*/
+#titulo{background:#4d90d7;color:#ffffff; padding-left: 1em !important; margin: 0 0 0 0!important; padding: 0.5%;}
+#descripcion{background-color:rgba(113, 155, 207, 0.2);border: none;-moz-border-radius: 10px;-webkit-border-radius: 10px; border-radius: 0px 0px 20px 20px; padding: 1.5em; margin: 0 0 5px!important;}
+#descripciont{background-color:rgba(113, 155, 207, 0.2);border: none;-moz-border-radius: 10px;-webkit-border-radius: 10px; border-radius: 0 0 10px 10px; padding: 1.5em; margin: 0 0 5px!important;}
+.widget .titulo-seccion {background-color: #0f69b4;color: #fff; padding:11px; margin: 0 !important;}	
+	/*.pic{display:none;}*/
+	.cycloneslider-caption-title, .cycloneslider-caption-description{background:#0f69b4; 
+    font-size: 13px!important;}
+	/*.banner-corto img:hover{-webkit-transform: scale(0.8);
+-ms-transform: scale(0.8);
+transform: scale(0.8);}	*/	
+/*--.banners-mosaico, .banner, .banner --img{border-radius:15px;}*/
+	.buscar{	display: none;}
+</style>
+</div></div><div class="widget_text widget"><div class="textwidget custom-html-widget"><style>
+/* Estilos Generales */
+.botonInfoPublica { 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-height: 100px;
+	width: calc(49% - 10px); 
+   /* width: 315px; /* Ajustado para mostrar dos botones lado a lado */
+    margin-right: 2%; /* Espacio entre botones */
+    border: none;
+    padding: 15px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    text-align: left;
+    background-color: #f9f9f9; /* Fondo más claro */
+    border-radius: 8px; /* Bordes redondeados */
+    border: 2px solid #e0e0e0; /* Borde sutil */
+    /*transition: all 0.3s ease;*/
+    cursor: pointer;
+    color: #333; /* Color de texto oscuro */
+    vertical-align: middle;
+	margin-bottom:5px;
+}
+
+/* Último botón sin margen derecho */
+.botonInfoPublica:last-child {
+    margin-right: 0;
+}
+
+/*.botonInfoPublica:hover { 
+    background-color: #0f69b4; /* Color de fondo al pasar el ratón 
+    color: #fff;
+    border: 2px solid transparent; /* Elimina el borde al pasar el ratón
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}*/
+
+/* Íconos */
+.infoIcon {
+    color: #0f69b4; /* Color del ícono por defecto */
+    padding: 10px;
+    font-size: 30px; /* Aumento del tamaño de ícono */
+    display: inline-block;
+    vertical-align: middle;
+    /*transition: all 0.3s ease; /* Transición suave */
+}
+
+/*.botonInfoPublica:hover, .infoIcon:hover {
+    color: #fff; /* Color del ícono en hover (vuelve al color original) */
+/*}*/
+
+/* Texto del botón */
+.txtBtnPublica {
+    color: inherit; /* Hereda el color del botón */
+    display: inline-block;
+    font-size: 20px; /* Tamaño de fuente más grande */
+    text-align: left;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
+/* Responsividad */
+@media only screen and (max-width: 768px) {   
+    .botonInfoPublica {
+        width: 100%;
+        margin-right: 0;
+        padding: 20px;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .infoIcon {
+        margin: 0 auto;
+        display: block;
+        text-align: center;
+    }
+
+    .txtBtnPublica {
+        display: block;
+        margin-top: 10px;
+        text-align: center;
+    }
+}
+
+	.titulo-seccion{
+/*margin-top:15px;*/
+background-color: #fff; 
+color: #337ab7; 
+padding: 15px;
+/*margin: 0 !important;*/
+
+}
+</style></div></div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    
+
+
+</div>
+			<div class="clearfix"></div>
+
+		</div>
+
+	</div>
+
+	
+
+	<div class="clearfix"></div>
+
+		<footer>
+		<div class="wrap">
+
+			<div class="bicolor">
+				<span class="azul"></span>
+				<span class="rojo"></span>
+			</div>
+
+            <div class="top">
+
+                <div class="listas">
+
+											<div class="lista">
+							<h5>Organismos Internacionales</h5>
+							<ul id="menu-main-menu" class="menu-main"><li id="menu-item-8423" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8423"><a href="https://www.paho.org/chi/">Organización Panamericana de la Salud</a></li>
+<li id="menu-item-8424" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8424"><a href="https://www.who.int/countries/chl/es/">Organización Mundial de la Salud</a></li>
+<li id="menu-item-9399" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-9399"><a href="https://www.cdc.gov/spanish/">Centro para el control y la Prevención de Enfermedades</a></li>
+</ul>						</div>
+					
+					
+						<div class="lista">
+							<h5>Especiales</h5>
+							<ul id="menu-main-menu" class="menu-main"><li id="menu-item-8780" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8780"><a href="https://www.cochranelibrary.com/es/">La Biblioteca Cochrane Plus</a></li>
+<li id="menu-item-8779" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8779"><a href="http://web.minsal.cl/estudios-y-encuestas-de-salud/">Estudios y Encuestas de Salud</a></li>
+<li id="menu-item-8781" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8781"><a href="http://saludbucal.minsal.cl/">Capsula Educativa Salud Bucal</a></li>
+<li id="menu-item-11434" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11434"><a href="https://diprece.minsal.cl/temas-de-salud/orden-alfabetico/guias-clinicas-no-ges/">Guías Clínicas No GES</a></li>
+<li id="menu-item-11836" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11836"><a href="https://diprece.minsal.cl/softwares-para-visualizar-los-documentos-de-este-sitio/">Descarga de visualizadores</a></li>
+</ul>						</div>
+					
+					
+						<div class="lista">
+							<h5>Otros sitio web de DIPRECE</h5>
+							<ul id="menu-main-menu" class="menu-main"><li id="menu-item-8419" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8419"><a href="https://redcronicas.minsal.cl">Agencia del Cáncer</a></li>
+<li id="menu-item-8420" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8420"><a href="https://rehabilitacion.minsal.cl">Rehabilitación y Discapacidad</a></li>
+<li id="menu-item-8421" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8421"><a href="https://vacunas.minsal.cl/">Inmunizaciones</a></li>
+<li id="menu-item-8422" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8422"><a href="https://redcronicas.minsal.cl">Enfermedades No Transmisibles</a></li>
+<li id="menu-item-58963" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-58963"><a href="https://saludbucal.minsal.cl/">Promoción y Prevención Salud Bucal</a></li>
+</ul>						</div>
+
+					
+<!-- agrego el 4to -->
+					 
+
+
+<!-- fin 4to -->
+
+
+
+                </div>
+
+                <div class="clearfix"></div>
+                <div class="sep"></div>
+
+            </div>
+
+            <div class="bottom">
+
+                <div class="left">
+                    <span>Mac Iver 541, Santiago, Chile - Teléfono: (+56 2) 2 5740 100</span>
+                </div>
+
+                <nav>
+                                    </nav>
+
+                <div class="clearfix"></div>
+
+                <div class="bicolor">
+					<span class="azul"></span>
+					<span class="rojo"></span>
+				</div>
+
+            </div>
+
+		</div>
+
+	</footer>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!--link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"/-->
+<!--link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/-->
+<!--Accesibilidad-->
+<script>(function(d){var s = d.createElement("script");s.setAttribute("data-account", "k7dtUyc64t");s.setAttribute("src", "https://cdn.userway.org/widget.js");(d.body || d.head).appendChild(s);})(document)</script><noscript>Please ensure Javascript is enabled for purposes of <a href="https://userway.org">website accessibility</a></noscript>
+<!--Accesibilidad-->
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+<script>jQuery(function($){
+  var tabMap = {
+    home: 90, menu4:93, menu3:97, menu2:92,
+    menu1:91, menu5:95, menu6:96
+  };
+  var tables = {};
+  $.each(tabMap, function(key,id){
+    tables[key] = $('#tablepress-'+id).DataTable({
+      responsive:true,
+      language:{ search:"Buscar:", lengthMenu:"Mostrar _MENU_", info:" _START_–_END_ de _TOTAL_" }
+    });
+  });
+  function updateSummary(key){
+    var title = $('button[data-bs-target="#'+key+'"]').text();
+    $('#guides-redesign .card-summary h5').text(title);
+    $('#total-count').text(tables[key].data().count());
+    tables[key].columns.adjust().responsive.recalc();
+  }
+  updateSummary('home');
+  $('button[data-bs-toggle="pill"]').on('shown.bs.tab',function(e){
+    var k = $(e.target).data('bs-target').substring(1);
+    updateSummary(k);
+    $('#cardsContainer').empty().addClass('d-none');
+    $('#tableContainer').removeClass('d-none');
+    $('#toggleView').text('Ver como tarjetas');
+  });
+  $('#applyFilters').click(function(){
+    var year = $('#filter-year').val();
+    var active = $('.nav-pills .active').data('bs-target').substring(1);
+    tables[active].column(2).search(year).draw();
+    bootstrap.Offcanvas.getInstance($('#filterPanel')[0]).hide();
+    updateSummary(active);
+  });
+  $('#toggleView').click(function(){
+    var active = $('.nav-pills .active').data('bs-target').substring(1),
+        dt = tables[active];
+    if ($('#tableContainer').is(':visible')) {
+      $('#tableContainer').addClass('d-none');
+      $('#cardsContainer').empty().removeClass('d-none');
+      dt.rows({search:'applied'}).data().each(r=>{
+        $('#cardsContainer').append(`
+          <div class="col-md-4"><div class="card h-100 mb-3">
+          <div class="card-body">${r[1]}<p><strong>Año:</strong> ${r[2]}</p>
+          </div></div></div>`);
+      });
+      $(this).text('Ver como tabla');
+    } else {
+      $('#cardsContainer').addClass('d-none').empty();
+      $('#tableContainer').removeClass('d-none');
+      $(this).text('Ver como tarjetas');
+    }
+  });
+});
+</script><script>document.addEventListener('DOMContentLoaded', function(){
+  const carousel = document.querySelector('.doc-carousel');
+  if (!carousel) return;
+
+  const prevBtn = document.querySelector('.carousel-prev');
+  const nextBtn = document.querySelector('.carousel-next');
+
+  // calculamos gap + ancho de tarjeta
+  const slide     = carousel.querySelector('.doc-slide');
+  const style     = getComputedStyle(carousel);
+  const gap       = parseInt(style.gap) || 16;
+  const width     = slide.getBoundingClientRect().width;
+  const scrollAmt = width + gap;
+
+  // límite máximo de scroll
+  const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+
+  nextBtn.addEventListener('click', () => {
+    if (carousel.scrollLeft >= maxScroll - 1) {
+      // si ya estás al final, vuelve al principio
+      carousel.scrollTo({ left: 0, behavior: 'smooth' });
+    } else {
+      carousel.scrollBy({ left: scrollAmt, behavior: 'smooth' });
+    }
+  });
+
+  prevBtn.addEventListener('click', () => {
+    if (carousel.scrollLeft <= 0) {
+      // si ya estás al principio, ve al final
+      carousel.scrollTo({ left: maxScroll, behavior: 'smooth' });
+    } else {
+      carousel.scrollBy({ left: -scrollAmt, behavior: 'smooth' });
+    }
+  });
+});
+</script><style class="wpcode-css-snippet">/* 1) Contenedor horizontal con scroll-snap */
+.doc-carousel {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  /* Oculta la barra sin desactivar el scroll */
+  scrollbar-width: none;            /* Firefox */
+  -ms-overflow-style: none;         /* IE 10+ */
+}
+.doc-carousel::-webkit-scrollbar {  /* Chrome, Safari y Edge */
+  display: none;
+}
+
+/* Título del carrusel: tamaño más compacto */
+.doc-carousel-title {
+  display: inline-block;        /* Para que el fondo envuelva solo el texto */
+  --background-color: #0f69b4;    /* Mismo azul de tu botón */
+  background-color: #fff;
+  color: #337ab7!important;
+  padding: 15px;
+  --color: #ffffff;               /* Texto blanco */
+  padding: 0.5em 1em;           /* Espaciado arriba/abajo e izquierda/derecha */
+  border-radius: 4px;           /* Esquinas redondeadas */
+  font-size: 1.25rem;           /* Ajusta tamaño si lo ves muy grande/pequeño */
+  font-weight: 500;             /* Un poco más grueso */
+  margin-bottom: 1rem;          /* Separación con el carrusel */
+  display: block;
+  width: 100%;
+  --text-align: center;           /* Centrar el texto */
+}
+
+
+/* Scrollbar ligero (Webkit) */
+.doc-carousel::-webkit-scrollbar {
+  height: 6px;
+}
+.doc-carousel::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.2);
+  border-radius: 3px;
+}
+
+/* 2) Cada “slide” encaja */
+.doc-slide {
+  scroll-snap-align: start;
+  flex: 0 0 calc(25% - 1rem); /* 4 por fila en desktop */
+  box-sizing: border-box;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  flex-direction: column;
+}
+
+/* Imágenes a full ancho */
+.doc-slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Cuerpo de la “card” */
+.doc-slide .card-body {
+  padding: .5rem;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.doc-slide h5 {
+  font-family: system-ui;
+  margin: 0;
+  font-size: .9rem;
+  text-align: center;
+}
+.doc-slide h5 a {
+  color: #0f69b4;
+  text-decoration: none;
+}
+.doc-slide h5 a:hover {
+  text-decoration: underline;
+}
+/* Contenedor con posición relativa */
+.doc-carousel-wrapper {
+  position: relative;
+  margin: 1rem 0;
+}
+
+/* Flechas */
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  background: rgba(0,0,0,0.3);
+  color: #fff;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.carousel-prev { left: 0.25rem; }
+.carousel-next { right: 0.25rem; }
+.carousel-arrow:hover {
+  background: rgba(0,0,0,0.5);
+}
+
+/* Asegura que el scrollbar quede oculto tras las flechas */
+.doc-carousel {
+  padding: 0 2.5rem;
+}
+
+/* 3) Responsive */
+@media (max-width: 992px) {
+  .doc-slide {
+    flex: 0 0 calc(33.333% - 1rem); /* 3 por fila en tablet */
+  }
+}
+@media (max-width: 768px) {
+  .doc-slide {
+    flex: 0 0 calc(50% - 1rem);   /* 2 por fila en móvil horizontal */
+  }
+}
+@media (max-width: 576px) {
+  .doc-slide {
+    flex: 0 0 calc(100% - 1rem);  /* 1 por fila en móvil vertical */
+  }
+}
+</style><script type='text/javascript' src='https://diprece.minsal.cl/wp-content/plugins/responsive-lightbox/assets/prettyphoto/jquery.prettyPhoto.min.js?ver=2.4.3' id='responsive-lightbox-prettyphoto-js'></script>
+<script type='text/javascript' src='https://diprece.minsal.cl/wp-includes/js/underscore.min.js?ver=1.8.3' id='underscore-js'></script>
+<script type='text/javascript' id='responsive-lightbox-js-extra'>
+/* <![CDATA[ */
+var rlArgs = {"script":"prettyphoto","selector":"lightbox","customEvents":"","activeGalleries":"1","animationSpeed":"normal","slideshow":"0","slideshowDelay":"5000","slideshowAutoplay":"0","opacity":"0.75","showTitle":"1","allowResize":"1","allowExpand":"1","width":"1080","height":"720","separator":"\/","theme":"pp_default","horizontalPadding":"20","hideFlash":"0","wmode":"opaque","videoAutoplay":"0","modal":"0","deeplinking":"0","overlayGallery":"1","keyboardShortcuts":"1","social":"0","woocommerce_gallery":"0","ajaxurl":"https:\/\/diprece.minsal.cl\/wp-admin\/admin-ajax.php","nonce":"67c4ca5c85","preview":"false","postId":"73769","scriptExtension":""};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://diprece.minsal.cl/wp-content/plugins/responsive-lightbox/js/front.js?ver=2.4.3' id='responsive-lightbox-js'></script>
+<script type='text/javascript' src='https://diprece.minsal.cl/wp-includes/js/wp-embed.min.js?ver=5.5.1' id='wp-embed-js'></script>
+
+<!--	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://diprece.minsal.cl/wp-content/themes/gobcl-wp-master-unidad/js/main.js" ></script>
+
+<!--script type="text/javascript">
+document.oncontextmenu = function(){return false;}
+</script-->
+
+<!--script>(function(t,e,s,o){var n,c,l;t.SMCX=t.SMCX||[],e.getElementById(o)||(n=e.getElementsByTagName(s),c=n[n.length-1],l=e.createElement(s),l.type="text/javascript",l.async=!0,l.id=o,l.src="https://widget.surveymonkey.com/collect/website/js/tRaiETqnLgj758hTBazgdzqaeN2YAMH89EMuF_2F_2BWIRBISJbFrLgOtfZjNowBlDFB.js",c.parentNode.insertBefore(l,c))})(window,document,"script","smcx-sdk");</script-->
+
+</body>
+</html>
