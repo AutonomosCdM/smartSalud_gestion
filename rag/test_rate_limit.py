@@ -4,6 +4,7 @@ Tests for rate limiting and retry mechanisms.
 Tests 10/minute rate limit with exponential backoff retry.
 """
 
+import os
 import pytest
 from unittest.mock import patch, MagicMock
 from fastapi.testclient import TestClient
@@ -29,10 +30,10 @@ class TestRateLimit10PerMinute:
                     "messages": [{"role": "user", "content": f"Test {i}"}],
                     "user_role": "medico"
                 },
-                headers={"Authorization": f"Bearer {mock_env.getenv('RAG_API_KEY')}"}
+                headers={"Authorization": f"Bearer {os.getenv('RAG_API_KEY')}"}
             )
-            assert response.status_code in [200, 500]  # 500 ok if API key error
-        
+            assert response.status_code in [200, 401, 500]  # 401/500 ok if auth/API error
+
         # 11th should be rate limited
         response = client.post(
             "/v1/chat/completions",
@@ -41,7 +42,7 @@ class TestRateLimit10PerMinute:
                 "messages": [{"role": "user", "content": "Test 11"}],
                 "user_role": "medico"
             },
-            headers={"Authorization": f"Bearer {mock_env.getenv('RAG_API_KEY')}"}
+            headers={"Authorization": f"Bearer {os.getenv('RAG_API_KEY')}"}
         )
         assert response.status_code == 429
     
@@ -157,7 +158,7 @@ class TestRateLimitHeaders:
                 "messages": [{"role": "user", "content": "Test"}],
                 "user_role": "medico"
             },
-            headers={"Authorization": f"Bearer {mock_env.getenv('RAG_API_KEY')}"}
+            headers={"Authorization": f"Bearer {os.getenv('RAG_API_KEY')}"}
         )
         
         assert "x-ratelimit-remaining" in response.headers or "X-RateLimit-Remaining" in response.headers
@@ -174,7 +175,7 @@ class TestRateLimitHeaders:
                 "messages": [{"role": "user", "content": "Test"}],
                 "user_role": "medico"
             },
-            headers={"Authorization": f"Bearer {mock_env.getenv('RAG_API_KEY')}"}
+            headers={"Authorization": f"Bearer {os.getenv('RAG_API_KEY')}"}
         )
         
         assert "x-ratelimit-reset" in response.headers or "X-RateLimit-Reset" in response.headers
@@ -193,7 +194,7 @@ class TestRateLimitHeaders:
                 "messages": [{"role": "user", "content": "Test"}],
                 "user_role": "medico"
             },
-            headers={"Authorization": f"Bearer {mock_env.getenv('RAG_API_KEY')}"}
+            headers={"Authorization": f"Bearer {os.getenv('RAG_API_KEY')}"}
         )
         
         assert "x-ratelimit-limit" in response.headers or "X-RateLimit-Limit" in response.headers

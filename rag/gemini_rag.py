@@ -6,12 +6,18 @@ for querying medical guidelines and protocols.
 """
 
 import os
+import time
 import logging
 from typing import Optional
 from google import genai
 from google.genai import types
 
 logger = logging.getLogger(__name__)
+
+
+class RateLimitError(Exception):
+    """Raised when API rate limit exceeded after retries."""
+    pass
 
 
 class GeminiRAG:
@@ -34,7 +40,8 @@ class GeminiRAG:
         self,
         question: str,
         store_ids: list[str],
-        system_prompt: Optional[str] = None
+        system_prompt: Optional[str] = None,
+        max_retries: int = 3
     ) -> dict:
         """Query documents in File Search stores.
 
@@ -42,9 +49,13 @@ class GeminiRAG:
             question: The question to ask.
             store_ids: List of File Search store IDs to search.
             system_prompt: Optional system instructions.
+            max_retries: Maximum retry attempts on rate limit (default: 3).
 
         Returns:
             dict with 'answer' and 'citations' keys.
+
+        Raises:
+            RateLimitError: If rate limit exceeded after max retries.
         """
         # Use dict syntax for compatibility
         config = {
@@ -62,11 +73,32 @@ class GeminiRAG:
         else:
             config['system_instruction'] = citation_instruction
 
-        response = self.client.models.generate_content(
-            model=self.model,
-            contents=question,
-            config=config
-        )
+        # Retry with exponential backoff
+        for attempt in range(max_retries):
+            try:
+                response = self.client.models.generate_content(
+                    model=self.model,
+                    contents=question,
+                    config=config
+                )
+                break  # Success, exit retry loop
+            except Exception as e:
+                error_msg = str(e).lower()
+                # Check if it's a rate limit error (429 or "rate limit" in message)
+                is_rate_limit = "429" in error_msg or "rate limit" in error_msg or "too many requests" in error_msg
+
+                if is_rate_limit and attempt < max_retries - 1:
+                    # Exponential backoff: 1s, 2s, 4s
+                    wait_time = 2 ** attempt
+                    logger.warning(f"Rate limit hit, retry {attempt + 1}/{max_retries} after {wait_time}s")
+                    time.sleep(wait_time)
+                elif is_rate_limit:
+                    # Max retries exhausted
+                    logger.error(f"Rate limit exceeded after {max_retries} attempts")
+                    raise RateLimitError(f"API rate limit exceeded after {max_retries} retries")
+                else:
+                    # Not a rate limit error, re-raise immediately
+                    raise
 
         # Extract citations from grounding metadata
         citations = []

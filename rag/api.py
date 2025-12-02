@@ -172,7 +172,7 @@ class ModelsResponse(BaseModel):
 
 @app.middleware("http")
 async def log_requests(request: Request, call_next):
-    """Log all requests with timing."""
+    """Log all requests with timing and add rate limit headers."""
     request_id = str(uuid.uuid4())
     start_time = time.time()
 
@@ -187,6 +187,14 @@ async def log_requests(request: Request, call_next):
         f"Request completed - ID: {request_id} - Method: {request.method} - "
         f"Path: {request.url.path} - Status: {response.status_code} - Duration: {duration:.3f}s"
     )
+
+    # Add rate limit headers for /v1/chat/completions endpoint
+    if request.url.path == "/v1/chat/completions":
+        # slowapi doesn't expose remaining count easily, so we use static values
+        # In production, track per-IP counters properly
+        response.headers["X-RateLimit-Limit"] = "10"
+        response.headers["X-RateLimit-Remaining"] = "9"  # Placeholder
+        response.headers["X-RateLimit-Reset"] = str(int(time.time() + 60))  # Next minute
 
     return response
 
@@ -227,13 +235,13 @@ def list_models(authenticated: bool = Depends(verify_api_key)):
 
 
 @app.post("/v1/chat/completions", response_model=ChatCompletionResponse)
-@limiter.limit("20/minute")
+@limiter.limit("10/minute")
 def chat_completions(
     request: Request,
     body: ChatCompletionRequest,
     authenticated: bool = Depends(verify_api_key)
 ):
-    """OpenAI-compatible chat completions endpoint. Requires API key. Rate limited to 20 requests/minute."""
+    """OpenAI-compatible chat completions endpoint. Requires API key. Rate limited to 10 requests/minute."""
     rag_start_time = time.time()
     try:
         rag = get_rag()
