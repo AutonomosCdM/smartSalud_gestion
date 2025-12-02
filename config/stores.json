@@ -1,0 +1,34 @@
+{
+  "MINSAL_Normativas": {
+    "display_name": "MINSAL Normativas Generales",
+    "description": "Guías clínicas y normativas públicas del MINSAL",
+    "roles": [
+      "matrona",
+      "medico",
+      "secretaria"
+    ]
+  },
+  "MINSAL_Matronas": {
+    "display_name": "MINSAL Protocolos Matronas",
+    "description": "Protocolos de maternidad, control prenatal y ginecología",
+    "roles": [
+      "matrona"
+    ]
+  },
+  "MINSAL_Medicos": {
+    "display_name": "MINSAL Guías Médicos",
+    "description": "Guías clínicas especializadas para médicos",
+    "roles": [
+      "medico"
+    ]
+  },
+  "CESFAM_Procedimientos": {
+    "display_name": "CESFAM Procedimientos Internos",
+    "description": "Procedimientos administrativos y operativos del CESFAM",
+    "roles": [
+      "matrona",
+      "medico",
+      "secretaria"
+    ]
+  }
+}
