@@ -4,6 +4,7 @@ Tests for strict role-model binding security.
 Ensures user role cannot override model-derived role.
 """
 
+import os
 import pytest
 from unittest.mock import patch, MagicMock
 from fastapi.testclient import TestClient
@@ -18,16 +19,16 @@ class TestRoleDerivedFromModelOnly:
         WHEN: Request processed
         THEN: Role MUST be "medico" (from model), ignore user_role."""
         # Will fail - role extraction doesn't ignore user_role
-        
-        with patch('rag.api.GeminiRAG') as mock_rag:
+
+        with patch('rag.api.get_rag') as mock_get_rag:
             # Setup mock response
             mock_instance = MagicMock()
             mock_instance.query_by_role.return_value = {
                 "answer": "Test response",
                 "citations": []
             }
-            mock_rag.return_value = mock_instance
-            
+            mock_get_rag.return_value = mock_instance
+
             response = client.post(
                 "/v1/chat/completions",
                 json={
@@ -35,21 +36,24 @@ class TestRoleDerivedFromModelOnly:
                     "messages": [{"role": "user", "content": "Test"}],
                     "user_role": "secretaria"  # User tries to override
                 },
-                headers={"Authorization": f"Bearer {mock_env.getenv('RAG_API_KEY')}"}
+                headers={"Authorization": f"Bearer {os.getenv('RAG_API_KEY')}"}
             )
-            
+
             # Verify query_by_role was called with "medico", not "secretaria"
+            assert response.status_code == 200, f"Expected 200, got {response.status_code}: {response.text}"
+            assert mock_instance.query_by_role.called, "query_by_role was not called"
             call_args = mock_instance.query_by_role.call_args
+            assert call_args is not None, "call_args is None - method not called"
             assert call_args[1]["role"] == "medico"  # Model-derived role
     
     def test_role_from_model_medico(self, client, mock_env):
         """GIVEN: model="smartsalud-medico"
         WHEN: query_by_role called
         THEN: Role is always "medico"."""
-        with patch('rag.api.GeminiRAG') as mock_rag:
+        with patch('rag.api.get_rag') as mock_get_rag:
             mock_instance = MagicMock()
             mock_instance.query_by_role.return_value = {"answer": "Test", "citations": []}
-            mock_rag.return_value = mock_instance
+            mock_get_rag.return_value = mock_instance
             
             client.post(
                 "/v1/chat/completions",
@@ -58,7 +62,7 @@ class TestRoleDerivedFromModelOnly:
                     "messages": [{"role": "user", "content": "Test"}],
                     "user_role": "matrona"
                 },
-                headers={"Authorization": f"Bearer {mock_env.getenv('RAG_API_KEY')}"}
+                headers={"Authorization": f"Bearer {os.getenv('RAG_API_KEY')}"}
             )
             
             call_args = mock_instance.query_by_role.call_args
@@ -68,10 +72,10 @@ class TestRoleDerivedFromModelOnly:
         """GIVEN: model="smartsalud-matrona"
         WHEN: query_by_role called
         THEN: Role is always "matrona"."""
-        with patch('rag.api.GeminiRAG') as mock_rag:
+        with patch('rag.api.get_rag') as mock_get_rag:
             mock_instance = MagicMock()
             mock_instance.query_by_role.return_value = {"answer": "Test", "citations": []}
-            mock_rag.return_value = mock_instance
+            mock_get_rag.return_value = mock_instance
             
             client.post(
                 "/v1/chat/completions",
@@ -80,7 +84,7 @@ class TestRoleDerivedFromModelOnly:
                     "messages": [{"role": "user", "content": "Test"}],
                     "user_role": "medico"  # User tries different role
                 },
-                headers={"Authorization": f"Bearer {mock_env.getenv('RAG_API_KEY')}"}
+                headers={"Authorization": f"Bearer {os.getenv('RAG_API_KEY')}"}
             )
             
             call_args = mock_instance.query_by_role.call_args
@@ -90,10 +94,10 @@ class TestRoleDerivedFromModelOnly:
         """GIVEN: model="smartsalud-secretaria"
         WHEN: query_by_role called
         THEN: Role is always "secretaria"."""
-        with patch('rag.api.GeminiRAG') as mock_rag:
+        with patch('rag.api.get_rag') as mock_get_rag:
             mock_instance = MagicMock()
             mock_instance.query_by_role.return_value = {"answer": "Test", "citations": []}
-            mock_rag.return_value = mock_instance
+            mock_get_rag.return_value = mock_instance
             
             client.post(
                 "/v1/chat/completions",
@@ -102,7 +106,7 @@ class TestRoleDerivedFromModelOnly:
                     "messages": [{"role": "user", "content": "Test"}],
                     "user_role": "medico"
                 },
-                headers={"Authorization": f"Bearer {mock_env.getenv('RAG_API_KEY')}"}
+                headers={"Authorization": f"Bearer {os.getenv('RAG_API_KEY')}"}
             )
             
             call_args = mock_instance.query_by_role.call_args
@@ -124,7 +128,7 @@ class TestRejectMismatchedRoleModel:
                 "messages": [{"role": "user", "content": "Test"}],
                 "user_role": "secretaria"  # Mismatch
             },
-            headers={"Authorization": f"Bearer {mock_env.getenv('RAG_API_KEY')}"}
+            headers={"Authorization": f"Bearer {os.getenv('RAG_API_KEY')}"}
         )
         
         # Should reject with 403 if mismatch validation is enabled
@@ -142,7 +146,7 @@ class TestRejectMismatchedRoleModel:
                 "messages": [{"role": "user", "content": "Test"}],
                 "user_role": "invalid_role"
             },
-            headers={"Authorization": f"Bearer {mock_env.getenv('RAG_API_KEY')}"}
+            headers={"Authorization": f"Bearer {os.getenv('RAG_API_KEY')}"}
         )
         
         # Should reject invalid role
@@ -171,7 +175,7 @@ class TestAuditLogRoleAccess:
                         "messages": [{"role": "user", "content": "Test"}],
                         "user_role": "medico"
                     },
-                    headers={"Authorization": f"Bearer {mock_env.getenv('RAG_API_KEY')}"}
+                    headers={"Authorization": f"Bearer {os.getenv('RAG_API_KEY')}"}
                 )
             
             # Verify audit log entry
@@ -195,7 +199,7 @@ class TestAuditLogRoleAccess:
                         "model": "smartsalud-medico",
                         "messages": [{"role": "user", "content": "Test"}]
                     },
-                    headers={"Authorization": f"Bearer {mock_env.getenv('RAG_API_KEY')}"}
+                    headers={"Authorization": f"Bearer {os.getenv('RAG_API_KEY')}"}
                 )
             
             # Verify timestamp in logs
@@ -221,7 +225,7 @@ class TestAuditLogRoleAccess:
                             "model": f"smartsalud-{role}",
                             "messages": [{"role": "user", "content": "Test"}]
                         },
-                        headers={"Authorization": f"Bearer {mock_env.getenv('RAG_API_KEY')}"}
+                        headers={"Authorization": f"Bearer {os.getenv('RAG_API_KEY')}"}
                     )
                     
                     # Verify role in logs

@@ -256,14 +256,29 @@ def chat_completions(
         if not question:
             raise HTTPException(status_code=400, detail="No user message found")
 
-        # Determine role from model name or explicit field
-        role = body.user_role
-        if "medico" in body.model:
+        # Extract role ONLY from model name (security: never trust user_role)
+        role = "rag"  # default
+        if "medico" in body.model.lower():
             role = "medico"
-        elif "matrona" in body.model:
+        elif "matrona" in body.model.lower():
             role = "matrona"
-        elif "secretaria" in body.model:
+        elif "secretaria" in body.model.lower():
             role = "secretaria"
+        elif "deepresearch" in body.model.lower():
+            role = "deepresearch"
+
+        # Security: Log warning if user_role doesn't match (but don't block - model wins)
+        if hasattr(body, 'user_role') and body.user_role and body.user_role != role:
+            logger.warning(
+                f"Role mismatch detected (ignoring user_role): model={body.model} derived_role={role} "
+                f"user_role={body.user_role} client={request.client.host}"
+            )
+
+        # Audit log: Track role access
+        logger.info(
+            f"Role access: client={request.client.host} role={role} "
+            f"model={body.model} question_preview={question[:50]}..."
+        )
 
         # Query RAG
         logger.info(
@@ -321,17 +336,35 @@ def list_audio_models(authenticated: bool = Depends(verify_api_key)):
 
 @app.get("/health")
 def health():
-    """Detailed health check."""
+    """Detailed health check with Gemini API connectivity test."""
+    status_info = {
+        "status": "healthy",
+        "stores_count": 0,
+        "stores": [],
+        "gemini_api": "unknown"
+    }
+
     try:
         manager = get_manager()
         stores = manager.list_stores()
-        return {
-            "status": "healthy",
-            "stores_count": len(stores),
-            "stores": [s["display_name"] for s in stores]
-        }
+        status_info["stores_count"] = len(stores)
+        status_info["stores"] = [s["display_name"] for s in stores]
+
+        # Test Gemini API connectivity
+        try:
+            # Quick ping - just list stores (already done above)
+            # If we got here, Gemini API is responding
+            status_info["gemini_api"] = "connected"
+        except Exception as gemini_error:
+            status_info["gemini_api"] = "error"
+            status_info["gemini_error"] = str(gemini_error)
+            status_info["status"] = "degraded"
+
     except Exception as e:
-        return {"status": "unhealthy", "error": str(e)}
+        status_info["status"] = "unhealthy"
+        status_info["error"] = str(e)
+
+    return status_info
 
 
 # CLI runner

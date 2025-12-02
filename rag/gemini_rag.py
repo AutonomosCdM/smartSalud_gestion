@@ -36,6 +36,13 @@ class GeminiRAG:
         self.client = genai.Client(api_key=self.api_key)
         self.model = "gemini-2.5-flash"
 
+        # Explicit LLM configuration (from docs)
+        self.default_config = {
+            "temperature": 0.3,
+            "max_output_tokens": 2048,
+            "top_p": 0.9
+        }
+
     def query(
         self,
         question: str,
@@ -63,7 +70,9 @@ class GeminiRAG:
                 'file_search': {
                     'file_search_store_names': store_ids
                 }
-            }]
+            }],
+            # Explicit generation config (avoid surprises in production)
+            'generation_config': self.default_config
         }
 
         # Add citation instruction to system prompt

@@ -74,9 +74,12 @@ def client():
 
 @pytest.fixture
 def mock_env(monkeypatch):
-    """Set required environment variables."""
+    """Set required environment variables and patch API_KEY constant."""
     monkeypatch.setenv("GOOGLE_API_KEY", "test-api-key-12345")
     monkeypatch.setenv("RAG_API_KEY", "test-rag-api-key-67890")
+    # Patch the module-level API_KEY constant (loaded at import time)
+    import rag.api
+    monkeypatch.setattr("rag.api.API_KEY", "test-rag-api-key-67890")
     return monkeypatch
 
 
