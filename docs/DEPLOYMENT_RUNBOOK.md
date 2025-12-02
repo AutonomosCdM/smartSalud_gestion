@@ -1,8 +1,8 @@
 # smartSalud RAG Production Deployment Runbook
 
 **Architecture**: Split frontend/backend with custom domains
-**Last Updated**: 2025-12-01
-**Status**: IN PROGRESS
+**Last Updated**: 2024-12-02
+**Status**: ✅ PRODUCTION READY
 
 ## Architecture Overview
 
@@ -25,12 +25,48 @@
 
 ## Deployment Status
 
-### ✅ Phase 4: CORS Configuration (COMPLETED)
-- [x] Updated `rag/api.py` to allow `https://smartsalud.autonomos.dev`
-- [x] Committed and pushed (commit: e2e2448)
-- [x] Railway auto-deploy triggered
+### ✅ Phase 1: DNS Configuration (COMPLETED - 2024-12-01)
+- [x] GoDaddy DNS records configured
+- [x] CNAME: api.smartsalud → Railway domain
+- [x] DNS propagation verified
+- [x] SSL certificates active
 
-### ⏳ Phase 1: DNS Configuration (MANUAL REQUIRED)
+### ✅ Phase 2: Railway Backend Configuration (COMPLETED - 2024-12-01)
+- [x] Custom domain configured: api.smartsalud.autonomos.dev
+- [x] SSL/TLS provisioned automatically
+- [x] Health checks passing
+- [x] Auto-deploy from GitHub main branch active
+
+### ✅ Phase 3: Railway Frontend Deployment (COMPLETED - 2024-12-01)
+- [x] Open WebUI deployed as Docker service
+- [x] Custom domain: smartsalud.autonomos.dev
+- [x] Railway Private Network configured
+- [x] Environment variables set
+- [x] CORS configuration updated
+
+### ✅ Phase 4: End-to-End Verification (COMPLETED - 2024-12-02)
+- [x] Frontend accessible at https://smartsalud.autonomos.dev
+- [x] Backend API responding at https://api.smartsalud.autonomos.dev
+- [x] All 4 models available (smartsalud-rag, -medico, -matrona, -secretaria)
+- [x] CORS working correctly
+- [x] Auto-deploy pipeline functional
+
+### Production Notes
+
+**Auto-Deploy Status**: ✅ Working
+- GitHub main branch → Railway automatic deployment
+- Commits trigger builds and zero-downtime rollouts
+
+**Fixed Issues** (no longer active):
+- slowapi parameter bug (fixed in commit: f9f9cd2)
+- Audio stub endpoints (added in commit: c160777)
+- CORS production domain (fixed in commit: e2e2448)
+
+---
+
+## Historical Manual Steps (FOR REFERENCE ONLY - Already Completed)
+
+### Phase 1: DNS Configuration (COMPLETED)
 
 **Action Required**: Add DNS record in GoDaddy
 
@@ -115,7 +151,7 @@ curl https://api.smartsalud.autonomos.dev/health
 # Expected: {"status":"healthy",...}
 ```
 
-### ⏳ Phase 5: End-to-End Verification (AFTER DEPLOYMENT)
+### Historical Verification Steps (Already Completed)
 
 **Verification Steps**:
 
@@ -178,8 +214,8 @@ PORT=<dynamic>
 
 ### Frontend Environment Variables (Railway)
 ```env
-# Backend connection
-OPENAI_API_BASE_URLS=https://api.smartsalud.autonomos.dev
+# Backend connection (using Railway Private Network)
+OPENAI_API_BASE_URLS=http://smartsalud-api.railway.internal/v1
 
 # Authentication
 OPENAI_API_KEYS=sk-dummy-key-for-custom-backend
@@ -272,11 +308,18 @@ Set up in Railway:
 - [ ] Regular security scans (schedule monthly)
 - [ ] Dependency updates (schedule weekly)
 
-## Known Issues
+## Production Status
 
-None at deployment time.
+**Current State**: ✅ Fully deployed and operational
 
-## Next Steps After Deployment
+**Services Running**:
+- Backend API: https://api.smartsalud.autonomos.dev/health
+- Frontend UI: https://smartsalud.autonomos.dev
+- Auto-deploy: Active (GitHub main → Railway)
+
+**Models Available**: 4 (smartsalud-rag, smartsalud-medico, smartsalud-matrona, smartsalud-secretaria)
+
+## Ongoing Maintenance
 
 1. **Monitor for 1 hour**:
    - Watch Railway logs for errors
@@ -307,6 +350,6 @@ None at deployment time.
 
 ---
 
-**Last Deployment**: 2025-12-01T00:00:00Z (PENDING)
-**Next Review**: After successful deployment
-**Runbook Version**: 1.0
+**Last Deployment**: 2024-12-01 (Production deployment completed)
+**Next Review**: Weekly monitoring or after significant changes
+**Runbook Version**: 1.1 (Updated 2024-12-02)

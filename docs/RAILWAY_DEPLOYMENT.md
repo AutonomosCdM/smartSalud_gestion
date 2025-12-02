@@ -48,16 +48,16 @@ COPY --from=builder /root/.local /root/.local
 COPY rag/ ./rag/
 COPY .env.example .env.example
 ENV PATH=/root/.local/bin:$PATH
-ENV PORT=8100
+ENV PORT=8080
 EXPOSE ${PORT}
-CMD uvicorn rag.api:app --host 0.0.0.0 --port ${PORT}
+CMD uvicorn rag.main:app --host 0.0.0.0 --port ${PORT}
 ```
 
 ### Deploy Settings
 
 | Setting | Value |
 |---------|-------|
-| **Start Command** | `uvicorn rag.api:app --host 0.0.0.0 --port ${PORT}` |
+| **Start Command** | `uvicorn rag.main:app --host 0.0.0.0 --port ${PORT}` |
 | **Health Check Path** | `/health` |
 | **Health Check Timeout** | 30 seconds |
 | **Restart Policy** | `on_failure` |
@@ -139,7 +139,7 @@ TTL: 600 seconds (10 minutes)
 
 | Variable | Value | Description |
 |----------|-------|-------------|
-| `OPENAI_API_BASE_URL` | `http://smartsalud-api.railway.internal:8080/v1` | Backend API URL (Private Network) |
+| `OPENAI_API_BASE_URL` | `http://smartsalud-api.railway.internal/v1` | Backend API URL (Railway Private Network) |
 | `OPENAI_API_KEY` | `<your-secure-api-key>` | API key for backend auth |
 | `WEBUI_AUTH` | `false` | ⚠️ **SECURITY WARNING:** Authentication disabled. Only deploy on private network with network-level access controls. DO NOT expose to public internet without enabling authentication. |
 | `PORT` | (Railway-assigned) | Dynamic port |
@@ -190,7 +190,7 @@ curl -I https://api.smartsalud.autonomos.dev/health
 
 | Service | Internal URL | Purpose |
 |---------|--------------|---------|
-| Backend API | `smartsalud-api.railway.internal:8080` | Frontend → Backend communication |
+| Backend API | `smartsalud-api.railway.internal` | Frontend → Backend communication |
 | Frontend | `smartsalud-frontend.railway.internal` | (Not used externally) |
 
 **Advantage:** Private network communication - no public internet exposure, no egress costs, faster latency.
@@ -399,7 +399,7 @@ railway logs --service smartsalud-frontend --tail 50
 **Common Causes:**
 - Missing `GOOGLE_API_KEY` or `RAG_API_KEY`
 - Incorrect Dockerfile path
-- Port mismatch (ensure using `$PORT` env var)
+- Railway automatically assigns PORT (no configuration needed)
 
 ### Frontend Can't Reach Backend
 
@@ -407,7 +407,7 @@ railway logs --service smartsalud-frontend --tail 50
 
 **Steps:**
 1. Verify Private Network URL: `railway variables --service smartsalud-frontend`
-2. Check `OPENAI_API_BASE_URL` uses Railway internal domain: `http://smartsalud-api.railway.internal:8080/v1`
+2. Check `OPENAI_API_BASE_URL` uses Railway internal domain: `http://smartsalud-api.railway.internal/v1`
 3. Verify backend is healthy: `curl https://api.smartsalud.autonomos.dev/health`
 
 **Common Causes:**
