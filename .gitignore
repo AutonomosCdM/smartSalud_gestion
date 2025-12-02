@@ -28,3 +28,4 @@ htmlcov/
 # Build
 dist/
 build/
+rag/.store_cache.json

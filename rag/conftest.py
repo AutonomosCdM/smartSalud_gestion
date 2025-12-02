@@ -60,6 +60,12 @@ def mock_store_cache(tmp_path):
 
 
 @pytest.fixture
+def temp_cache_file(tmp_path):
+    """Temporary cache file for isolated tests."""
+    return tmp_path / ".store_cache_test.json"
+
+
+@pytest.fixture
 def client():
     """FastAPI test client."""
     from rag.api import app

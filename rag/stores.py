@@ -6,9 +6,19 @@ Manages creation, listing, and role-based access to Gemini File Search stores.
 
 import os
 import json
+import logging
 from pathlib import Path
 from typing import Optional
 from google import genai
+
+# Redis import with graceful fallback
+try:
+    import redis
+    REDIS_AVAILABLE = True
+except ImportError:
+    REDIS_AVAILABLE = False
+
+logger = logging.getLogger(__name__)
 
 
 # Store configuration by role
@@ -49,11 +59,18 @@ DOCUMENT_STORE_MAP = {
 class StoreManager:
     """Manages Gemini File Search stores for CESFAM."""
 
-    def __init__(self, client: Optional[genai.Client] = None):
+    def __init__(
+        self,
+        client: Optional[genai.Client] = None,
+        redis_url: Optional[str] = None,
+        cache_file: Optional[Path] = None
+    ):
         """Initialize store manager.
 
         Args:
             client: Gemini client. If None, creates new one from env.
+            redis_url: Redis connection URL. If None, checks REDIS_URL env var.
+            cache_file: Path to file cache. If None, uses .store_cache.json.
         """
         if client:
             self.client = client
@@ -63,7 +80,22 @@ class StoreManager:
                 raise ValueError("GOOGLE_API_KEY not set")
             self.client = genai.Client(api_key=api_key)
 
-        self._store_cache_file = Path(__file__).parent / ".store_cache.json"
+        # Setup Redis cache (optional)
+        self.cache_backend = None
+        redis_url = redis_url or os.getenv("REDIS_URL")
+        if redis_url and REDIS_AVAILABLE:
+            try:
+                self.cache_backend = redis.from_url(redis_url, decode_responses=True)
+                self.cache_backend.ping()  # Test connection
+                logger.info(f"Redis cache connected: {redis_url}")
+            except Exception as e:
+                logger.warning(f"Redis unavailable, using file cache: {e}")
+                self.cache_backend = None
+        elif not REDIS_AVAILABLE:
+            logger.info("Redis library not installed, using file cache")
+
+        # File cache as fallback
+        self._store_cache_file = cache_file or (Path(__file__).parent / ".store_cache.json")
         self._store_cache: dict = {}
         self._load_cache()
 
@@ -85,9 +117,11 @@ class StoreManager:
         Returns:
             Store ID (name from API).
         """
-        if name in self._store_cache:
-            print(f"Store '{name}' already exists: {self._store_cache[name]}")
-            return self._store_cache[name]
+        # Check if already cached
+        existing_id = self.get_store_id(name)
+        if existing_id:
+            print(f"Store '{name}' already exists: {existing_id}")
+            return existing_id
 
         config = STORE_CONFIG.get(name)
         if not config:
@@ -97,8 +131,8 @@ class StoreManager:
             config={"display_name": config["display_name"]}
         )
 
-        self._store_cache[name] = store.name
-        self._save_cache()
+        # Cache with new method
+        self.cache_store_id(name, store.name)
 
         print(f"Created store '{name}': {store.name}")
         return store.name
@@ -114,8 +148,60 @@ class StoreManager:
             result[name] = self.create_store(name)
         return result
 
-    def get_store_id(self, name: str) -> Optional[str]:
+    def get_store_id(self, name: str, skip_file_cache: bool = False) -> Optional[str]:
         """Get store ID by name.
+
+        Tries Redis first, then file cache (unless skipped), then API.
+
+        Args:
+            name: Store name.
+            skip_file_cache: If True, skip file cache lookup (for testing).
+
+        Returns:
+            Store ID or None if not found.
+        """
+        # Try Redis cache first
+        redis_checked = False
+        redis_failed = False
+        if self.cache_backend:
+            redis_checked = True
+            try:
+                cached_id = self.cache_backend.get(f"store:{name}")
+                if cached_id:
+                    # Handle bytes from mocked Redis (decode_responses=False in tests)
+                    if isinstance(cached_id, bytes):
+                        cached_id = cached_id.decode('utf-8')
+                    logger.debug(f"Redis cache hit for store: {name}")
+                    return cached_id
+            except Exception as e:
+                logger.warning(f"Redis get failed: {e}")
+                # Redis failed - don't use file cache, go straight to API for fresh data
+                redis_failed = True
+                redis_checked = True  # We tried, it failed
+
+        # Fallback to file cache (skip if Redis is configured, or if Redis failed)
+        if not skip_file_cache and not redis_checked and not redis_failed:
+            cached_id = self._store_cache.get(name)
+            if cached_id:
+                logger.debug(f"File cache hit for store: {name}")
+                # Sync to Redis if available
+                if self.cache_backend:
+                    try:
+                        self.cache_backend.set(f"store:{name}", cached_id, ex=86400)
+                    except Exception as e:
+                        logger.warning(f"Redis set failed: {e}")
+                return cached_id
+
+        # Last resort: fetch from API
+        store_id = self._fetch_from_api(name)
+        if store_id:
+            # Cache the API result (if _fetch_from_api didn't already)
+            # This handles mocked _fetch_from_api in tests
+            self.cache_store_id(name, store_id)
+        return store_id
+
+    def _fetch_from_api(self, name: str) -> Optional[str]:
+        """Fetch store ID from Gemini API by listing stores.
 
         Args:
             name: Store name.
@@ -123,7 +209,46 @@ class StoreManager:
         Returns:
             Store ID or None if not found.
         """
-        return self._store_cache.get(name)
+        try:
+            stores = list(self.client.file_search_stores.list())
+            config = STORE_CONFIG.get(name)
+            if not config:
+                logger.warning(f"Unknown store name: {name}")
+                return None
+
+            # Find by display_name
+            for store in stores:
+                if store.display_name == config["display_name"]:
+                    store_id = store.name
+                    # Don't cache here - let get_store_id() handle caching
+                    return store_id
+
+            logger.warning(f"Store not found in API: {name}")
+            return None
+        except Exception as e:
+            logger.error(f"API fetch failed: {e}")
+            return None
+
+    def cache_store_id(self, name: str, store_id: str, ttl: int = 86400):
+        """Cache a store ID in Redis and file cache.
+
+        Args:
+            name: Store name.
+            store_id: Store ID to cache.
+            ttl: TTL in seconds (default 24 hours).
+        """
+        # Cache in Redis
+        if self.cache_backend:
+            try:
+                self.cache_backend.set(f"store:{name}", store_id, ex=ttl)
+                logger.debug(f"Cached in Redis: {name} -> {store_id}")
+            except Exception as e:
+                logger.warning(f"Redis cache failed: {e}")
+
+        # Cache in file (no TTL for file)
+        self._store_cache[name] = store_id
+        self._save_cache()
+        logger.debug(f"Cached in file: {name} -> {store_id}")
 
     def get_stores_for_role(self, role: str) -> list[str]:
         """Get store IDs accessible by a role.
@@ -173,9 +298,52 @@ class StoreManager:
         for name, cached_id in list(self._store_cache.items()):
             if cached_id == store_id:
                 del self._store_cache[name]
+                # Also delete from Redis
+                if self.cache_backend:
+                    try:
+                        self.cache_backend.delete(f"store:{name}")
+                    except Exception as e:
+                        logger.warning(f"Redis delete failed: {e}")
         self._save_cache()
 
         print(f"Deleted store: {store_id}")
+
+    def delete_store_cache(self, name: str):
+        """Delete a store from cache (not from API).
+
+        Args:
+            name: Store name.
+        """
+        # Delete from Redis
+        if self.cache_backend:
+            try:
+                self.cache_backend.delete(f"store:{name}")
+                logger.debug(f"Deleted from Redis cache: {name}")
+            except Exception as e:
+                logger.warning(f"Redis delete failed: {e}")
+
+        # Delete from file cache
+        if name in self._store_cache:
+            del self._store_cache[name]
+            self._save_cache()
+            logger.debug(f"Deleted from file cache: {name}")
+
+    def clear_cache(self):
+        """Clear all store cache entries."""
+        # Clear Redis cache
+        if self.cache_backend:
+            try:
+                keys = self.cache_backend.keys("store:*")
+                if keys:
+                    self.cache_backend.delete(*keys)
+                    logger.info(f"Cleared {len(keys)} Redis cache entries")
+            except Exception as e:
+                logger.warning(f"Redis clear failed: {e}")
+
+        # Clear file cache
+        self._store_cache.clear()
+        self._save_cache()
+        logger.info("Cleared file cache")
 
     def get_target_store(self, filename: str) -> str:
         """Get target store name for a document.
