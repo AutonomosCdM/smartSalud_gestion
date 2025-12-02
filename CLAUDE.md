@@ -131,6 +131,24 @@ cd rag && uvicorn main:app --port 8000
 docker start open-webui  # localhost:3001
 ```
 
+## Railway CLI (ALWAYS CHECK THIS FIRST)
+
+**Available**: `railway` command is installed and authenticated
+
+**Common commands:**
+```bash
+railway status              # Current project/service info
+railway list               # List all projects
+railway variables          # Show environment variables
+railway domain             # Manage domains
+railway logs               # View service logs
+railway up                 # Deploy current directory
+railway add                # Add new service
+railway unlink/link        # Change project association
+```
+
+**Rule**: Before asking "what's the Railway project name?" or "what services exist?", RUN `railway status` first.
+
 ## Critical Rules
 
 ✅ **DO:**
