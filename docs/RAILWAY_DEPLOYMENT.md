@@ -11,7 +11,7 @@
 | **Project Name** | `smartsalud-rag` |
 | **Environment** | `production` |
 | **Region** | Auto (Railway-selected) |
-| **Repository** | https://github.com/AutonomosCdM/smartSalud-rag |
+| **Repository** | https://github.com/AutonomosCdM/smartSalud_gestion |
 
 ---
 
@@ -23,7 +23,7 @@
 |---------|-------|
 | **Service Name** | `smartsalud-api` |
 | **Type** | GitHub-connected deployment |
-| **Repository** | AutonomosCdM/smartSalud-rag |
+| **Repository** | AutonomosCdM/smartSalud_gestion |
 | **Branch** | `main` |
 | **Root Directory** | `/` |
 

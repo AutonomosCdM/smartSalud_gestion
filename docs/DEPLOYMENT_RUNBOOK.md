@@ -19,7 +19,7 @@
 ┌─────────────────────────────────────────────────────┐
 │ api.smartsalud.autonomos.dev (Backend)              │
 │ FastAPI + Gemini RAG - Python Application          │
-│ Repo: AutonomosCdM/smartSalud-rag                   │
+│ Repo: AutonomosCdM/smartSalud_gestion               │
 └─────────────────────────────────────────────────────┘
 ```
 
