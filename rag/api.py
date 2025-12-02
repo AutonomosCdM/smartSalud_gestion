@@ -229,8 +229,8 @@ def list_models(authenticated: bool = Depends(verify_api_key)):
 @app.post("/v1/chat/completions", response_model=ChatCompletionResponse)
 @limiter.limit("20/minute")
 def chat_completions(
-    http_request: Request,
-    request: ChatCompletionRequest,
+    request: Request,
+    body: ChatCompletionRequest,
     authenticated: bool = Depends(verify_api_key)
 ):
     """OpenAI-compatible chat completions endpoint. Requires API key. Rate limited to 20 requests/minute."""
@@ -240,7 +240,7 @@ def chat_completions(
 
         # Extract question from last user message
         question = None
-        for msg in reversed(request.messages):
+        for msg in reversed(body.messages):
             if msg.role == "user":
                 question = msg.content
                 break
@@ -249,12 +249,12 @@ def chat_completions(
             raise HTTPException(status_code=400, detail="No user message found")
 
         # Determine role from model name or explicit field
-        role = request.user_role
-        if "medico" in request.model:
+        role = body.user_role
+        if "medico" in body.model:
             role = "medico"
-        elif "matrona" in request.model:
+        elif "matrona" in body.model:
             role = "matrona"
-        elif "secretaria" in request.model:
+        elif "secretaria" in body.model:
             role = "secretaria"
 
         # Query RAG
@@ -279,7 +279,7 @@ def chat_completions(
         return ChatCompletionResponse(
             id=f"chatcmpl-{uuid.uuid4().hex[:8]}",
             created=int(time.time()),
-            model=request.model,
+            model=body.model,
             choices=[
                 ChatCompletionChoice(
                     index=0,
