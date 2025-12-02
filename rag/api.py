@@ -299,6 +299,18 @@ def chat_completions(
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/v1/audio/voices")
+def list_audio_voices(authenticated: bool = Depends(verify_api_key)):
+    """Stub endpoint for Open WebUI compatibility. Returns empty voice list."""
+    return {"data": []}
+
+
+@app.get("/v1/audio/models")
+def list_audio_models(authenticated: bool = Depends(verify_api_key)):
+    """Stub endpoint for Open WebUI compatibility. Returns empty model list."""
+    return {"data": []}
+
+
 @app.get("/health")
 def health():
     """Detailed health check."""
