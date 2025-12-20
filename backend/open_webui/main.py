@@ -576,8 +576,29 @@ async def lifespan(app: FastAPI):
 
     # This should be blocking (sync) so functions are not deactivated on first /get_models calls
     # when the first user lands on the / route.
-    log.info("Installing external dependencies of functions and tools...")
-    install_tool_and_function_dependencies()
+    # log.info("Installing external dependencies of functions and tools...")
+    # install_tool_and_function_dependencies()
+
+    # Moviendo inicialización de modelos aquí para evitar bloqueo en import
+    try:
+        app.state.ef = get_ef(
+            app.state.config.RAG_EMBEDDING_ENGINE, app.state.config.RAG_EMBEDDING_MODEL
+        )
+        if (
+            app.state.config.ENABLE_RAG_HYBRID_SEARCH
+            and not app.state.config.BYPASS_EMBEDDING_AND_RETRIEVAL
+        ):
+            app.state.rf = get_rf(
+                app.state.config.RAG_RERANKING_ENGINE,
+                app.state.config.RAG_RERANKING_MODEL,
+                app.state.config.RAG_EXTERNAL_RERANKER_URL,
+                app.state.config.RAG_EXTERNAL_RERANKER_API_KEY,
+            )
+        else:
+            app.state.rf = None
+    except Exception as e:
+        log.error(f"Error updating models in lifespan: {e}")
+        pass
 
     app.state.redis = get_redis_connection(
         redis_url=REDIS_URL,
@@ -982,25 +1003,16 @@ app.state.rf = None
 app.state.YOUTUBE_LOADER_TRANSLATION = None
 
 
-try:
-    app.state.ef = get_ef(
-        app.state.config.RAG_EMBEDDING_ENGINE, app.state.config.RAG_EMBEDDING_MODEL
-    )
-    if (
-        app.state.config.ENABLE_RAG_HYBRID_SEARCH
-        and not app.state.config.BYPASS_EMBEDDING_AND_RETRIEVAL
-    ):
-        app.state.rf = get_rf(
-            app.state.config.RAG_RERANKING_ENGINE,
-            app.state.config.RAG_RERANKING_MODEL,
-            app.state.config.RAG_EXTERNAL_RERANKER_URL,
-            app.state.config.RAG_EXTERNAL_RERANKER_API_KEY,
-        )
-    else:
-        app.state.rf = None
-except Exception as e:
-    log.error(f"Error updating models: {e}")
-    pass
+app.state.rf = None
+
+# Inicialización movida a lifespan
+# try:
+#     print("DEBUG: [Global] Inicializando embedding function...", flush=True)
+#     app.state.ef = get_ef(
+#         app.state.config.RAG_EMBEDDING_ENGINE, app.state.config.RAG_EMBEDDING_MODEL
+#     )
+#     ...
+
 
 
 app.state.EMBEDDING_FUNCTION = get_embedding_function(
