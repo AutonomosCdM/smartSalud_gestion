@@ -34,6 +34,7 @@ Para un entendimiento profundo del sistema, consulta nuestra sección de documen
 
 - 🛠️ **[Guía Maestra de Desarrollo](DEVELOPMENT_GUIDE.md)**: Flujo de trabajo, arquitectura y gestión de dependencias.
 - 📘 **[Documentación Técnica](docs/smartdoc/SMARTDOC_TECHNICAL_GUIDE.md)**: Configuración del backend, parches de Gemini y arquitectura RAG.
+- 🛡️ **[Guardrails Clínicos](docs/smartdoc/walkthrough_guardrails.md)**: Reporte sobre anonimización de datos (PII), validación de ámbito y seguridad.
 - 📗 **[Manual de Usuario Clínico](docs/smartdoc/SMARTDOC_USER_GUIDE.md)**: Cómo optimizar el uso de smartDoc en la práctica clínica diaria.
 - 🛡️ **[Auditoría de Privacidad](docs/smartdoc/AUDITORIA_TELEMETRIA.md)**: Reporte sobre la desactivación de telemetría y seguridad de datos.
 
