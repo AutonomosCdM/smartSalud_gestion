@@ -1,6 +1,6 @@
 # 🏥 smartDoc
 
-![smartDoc Logo](file:///Users/autonomos_dev/.gemini/antigravity/brain/733bfcb5-936b-4364-90ec-bc5dcecbbfd1/smartdoc_logo_luxury_1766266059250.png)
+![smartDoc Logo](docs/smartdoc/assets/smartdoc_logo_luxury_1766266059250.png)
 
 **smartDoc** es una plataforma de IA avanzada diseñada para el entorno médico, basada en una versión altamente optimizada de Open WebUI y potenciada por el motor de razonamiento clínico de **Google Gemini**.
 
@@ -18,30 +18,30 @@
 
 ## 🚀 Inicio Rápido
 
-Para ejecutar smartDoc en tu entorno local:
+Para ejecutar smartDoc en tu entorno local, simplemente usa el comando global:
 
-1. Asegúrate de tener configurada tu `OPENAI_API_KEYS` (Google AI Studio) en el sistema.
-2. Ejecuta el script de inicio robusto:
-   ```bash
-   ./run_local.sh
-   ```
-3. Accede a la plataforma en [http://localhost:8080](http://localhost:8080).
+```bash
+smartdoc
+```
+
+Este comando configurará el entorno, iniciará el servidor en el puerto **8080** y abrirá automáticamente tu navegador.
 
 ---
 
 ## 📚 Documentación y Guías
 
-Para un entendimiento profundo del sistema, consulta los siguientes documentos:
+Para un entendimiento profundo del sistema, consulta nuestra sección de documentación oficial:
 
-- 🛠️ **[Guía Técnica Maestra](file:///Users/autonomos_dev/.gemini/antigravity/brain/733bfcb5-936b-4364-90ec-bc5dcecbbfd1/SMARTDOC_TECHNICAL_GUIDE.md)**: Configuración del backend, parches de Gemini y arquitectura RAG.
-- 📋 **[Guía de Uso Médico](file:///Users/autonomos_dev/.gemini/antigravity/brain/733bfcb5-936b-4364-90ec-bc5dcecbbfd1/SMARTDOC_USER_GUIDE.md)**: Cómo optimizar el uso de smartDoc en la práctica clínica diaria.
-- 🔄 **[Walkthrough de Deduplicación](file:///Users/autonomos_dev/.gemini/antigravity/brain/733bfcb5-936b-4364-90ec-bc5dcecbbfd1/walkthrough_deduplicacion.md)**: Explicación detallada del sistema de ahorro de almacenamiento y optimización de contexto.
+- 🛠️ **[Guía Maestra de Desarrollo](DEVELOPMENT_GUIDE.md)**: Flujo de trabajo, arquitectura y gestión de dependencias.
+- 📘 **[Documentación Técnica](docs/smartdoc/SMARTDOC_TECHNICAL_GUIDE.md)**: Configuración del backend, parches de Gemini y arquitectura RAG.
+- 📗 **[Manual de Usuario Clínico](docs/smartdoc/SMARTDOC_USER_GUIDE.md)**: Cómo optimizar el uso de smartDoc en la práctica clínica diaria.
+- 🛡️ **[Auditoría de Privacidad](docs/smartdoc/AUDITORIA_TELEMETRIA.md)**: Reporte sobre la desactivación de telemetría y seguridad de datos.
 
 ---
 
-## 🛠️ Desarrollo Local
+## 🛠️ Contribución
 
-Para contribuir a las capacidades base del sistema, consulta el [Guía de Desarrollo Local](https://docs.openwebui.com/getting-started/advanced-topics/development) de Open WebUI.
+Si deseas contribuir a las capacidades base del sistema, consulta la [Documentación Oficial de Open WebUI](https://docs.openwebui.com/).
 
 ---
 *smartDoc - Inteligencia Artificial para el Cuidado de la Salud - 2025*
