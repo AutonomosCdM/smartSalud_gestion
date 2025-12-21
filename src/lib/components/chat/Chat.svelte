@@ -83,6 +83,12 @@
 	import { createOpenAITextStream } from '$lib/apis/streaming';
 	import { getFunctions } from '$lib/apis/functions';
 	import { updateFolderById } from '$lib/apis/folders';
+	import {
+		uploadGoogleDriveFile as uploadGoogleDriveFileUtil,
+		uploadWebUrl,
+		uploadYoutubeTranscription as uploadYoutubeTranscriptionUtil,
+		type FileItem
+	} from './utils/fileUpload';
 
 	import Banner from '../common/Banner.svelte';
 	import MessageInput from '$lib/components/chat/MessageInput.svelte';
@@ -646,25 +652,11 @@
 		}
 	});
 
-	// File upload functions
+	// File upload functions - using extracted utilities
 
 	const uploadGoogleDriveFile = async (fileData) => {
-		console.log('Starting uploadGoogleDriveFile with:', {
-			id: fileData.id,
-			name: fileData.name,
-			url: fileData.url,
-			headers: {
-				Authorization: `Bearer ${token}`
-			}
-		});
-
-		// Validate input
-		if (!fileData?.id || !fileData?.name || !fileData?.url || !fileData?.headers?.Authorization) {
-			throw new Error('Invalid file data provided');
-		}
-
 		const tempItemId = uuidv4();
-		const fileItem = {
+		const placeholderItem = {
 			type: 'file',
 			file: '',
 			id: null,
@@ -677,106 +669,30 @@
 			size: 0
 		};
 
-		try {
-			files = [...files, fileItem];
-			console.log('Processing web file with URL:', fileData.url);
+		files = [...files, placeholderItem];
 
-			// Configure fetch options with proper headers
-			const fetchOptions = {
-				headers: {
-					Authorization: fileData.headers.Authorization,
-					Accept: '*/*'
-				},
-				method: 'GET'
-			};
+		const result = await uploadGoogleDriveFileUtil(
+			fileData,
+			localStorage.token,
+			$settings?.audio?.stt?.language
+		);
 
-			// Attempt to fetch the file
-			console.log('Fetching file content from Google Drive...');
-			const fileResponse = await fetch(fileData.url, fetchOptions);
-
-			if (!fileResponse.ok) {
-				const errorText = await fileResponse.text();
-				throw new Error(`Failed to fetch file (${fileResponse.status}): ${errorText}`);
+		if (result.success && result.fileItem) {
+			// Update the placeholder with the actual file data
+			const idx = files.findIndex((f) => f.itemId === tempItemId);
+			if (idx !== -1) {
+				files[idx] = { ...files[idx], ...result.fileItem };
+				files = files;
 			}
-
-			// Get content type from response
-			const contentType = fileResponse.headers.get('content-type') || 'application/octet-stream';
-			console.log('Response received with content-type:', contentType);
-
-			// Convert response to blob
-			console.log('Converting response to blob...');
-			const fileBlob = await fileResponse.blob();
-
-			if (fileBlob.size === 0) {
-				throw new Error('Retrieved file is empty');
-			}
-
-			console.log('Blob created:', {
-				size: fileBlob.size,
-				type: fileBlob.type || contentType
-			});
-
-			// Create File object with proper MIME type
-			const file = new File([fileBlob], fileData.name, {
-				type: fileBlob.type || contentType
-			});
-
-			console.log('File object created:', {
-				name: file.name,
-				size: file.size,
-				type: file.type
-			});
-
-			if (file.size === 0) {
-				throw new Error('Created file is empty');
-			}
-
-			// If the file is an audio file, provide the language for STT.
-			let metadata = null;
-			if (
-				(file.type.startsWith('audio/') || file.type.startsWith('video/')) &&
-				$settings?.audio?.stt?.language
-			) {
-				metadata = {
-					language: $settings?.audio?.stt?.language
-				};
-			}
-
-			// Upload file to server
-			console.log('Uploading file to server...');
-			const uploadedFile = await uploadFile(localStorage.token, file, metadata);
-
-			if (!uploadedFile) {
-				throw new Error('Server returned null response for file upload');
-			}
-
-			console.log('File uploaded successfully:', uploadedFile);
-
-			// Update file item with upload results
-			fileItem.status = 'uploaded';
-			fileItem.file = uploadedFile;
-			fileItem.id = uploadedFile.id;
-			fileItem.size = file.size;
-			fileItem.collection_name = uploadedFile?.meta?.collection_name;
-			fileItem.url = `${WEBUI_API_BASE_URL}/files/${uploadedFile.id}`;
-
-			files = files;
 			toast.success($i18n.t('File uploaded successfully'));
-		} catch (e) {
-			console.error('Error uploading file:', e);
+		} else {
 			files = files.filter((f) => f.itemId !== tempItemId);
-			toast.error(
-				$i18n.t('Error uploading file: {{error}}', {
-					error: e.message || 'Unknown error'
-				})
-			);
+			toast.error($i18n.t('Error uploading file: {{error}}', { error: result.error || 'Unknown error' }));
 		}
 	};
 
 	const uploadWeb = async (url) => {
-		console.log(url);
-
-		const fileItem = {
+		const placeholderItem = {
 			type: 'text',
 			name: url,
 			collection_name: '',
@@ -785,31 +701,24 @@
 			error: ''
 		};
 
-		try {
-			files = [...files, fileItem];
-			const res = await processWeb(localStorage.token, '', url);
+		files = [...files, placeholderItem];
 
-			if (res) {
-				fileItem.status = 'uploaded';
-				fileItem.collection_name = res.collection_name;
-				fileItem.file = {
-					...res.file,
-					...fileItem.file
-				};
+		const result = await uploadWebUrl(url, localStorage.token);
 
+		if (result.success && result.fileItem) {
+			const idx = files.findIndex((f) => f.name === url && f.status === 'uploading');
+			if (idx !== -1) {
+				files[idx] = { ...files[idx], ...result.fileItem };
 				files = files;
 			}
-		} catch (e) {
-			// Remove the failed doc from the files array
+		} else {
 			files = files.filter((f) => f.name !== url);
-			toast.error(JSON.stringify(e));
+			toast.error(result.error || 'Upload failed');
 		}
 	};
 
 	const uploadYoutubeTranscription = async (url) => {
-		console.log(url);
-
-		const fileItem = {
+		const placeholderItem = {
 			type: 'text',
 			name: url,
 			collection_name: '',
@@ -819,23 +728,19 @@
 			error: ''
 		};
 
-		try {
-			files = [...files, fileItem];
-			const res = await processYoutubeVideo(localStorage.token, url);
+		files = [...files, placeholderItem];
 
-			if (res) {
-				fileItem.status = 'uploaded';
-				fileItem.collection_name = res.collection_name;
-				fileItem.file = {
-					...res.file,
-					...fileItem.file
-				};
+		const result = await uploadYoutubeTranscriptionUtil(url, localStorage.token);
+
+		if (result.success && result.fileItem) {
+			const idx = files.findIndex((f) => f.name === url && f.status === 'uploading');
+			if (idx !== -1) {
+				files[idx] = { ...files[idx], ...result.fileItem };
 				files = files;
 			}
-		} catch (e) {
-			// Remove the failed doc from the files array
+		} else {
 			files = files.filter((f) => f.name !== url);
-			toast.error(`${e}`);
+			toast.error(result.error || 'Upload failed');
 		}
 	};
 
