@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Optional
 from urllib.parse import quote
 import asyncio
+import hashlib
 
 from fastapi import (
     BackgroundTasks,
@@ -212,6 +213,20 @@ def upload_file_handler(
                     ),
                 )
 
+        # Calculate file hash for deduplication
+        sha256 = hashlib.sha256()
+        file.file.seek(0)
+        while chunk := file.file.read(8192):
+            sha256.update(chunk)
+        file_hash = sha256.hexdigest()
+        file.file.seek(0)
+
+        # Check for existing file with the same hash for the current user
+        existing_file = Files.get_file_by_hash_and_user_id(file_hash, user.id)
+        if existing_file:
+            log.info(f"Duplicate file detected (hash: {file_hash}). Reusing existing file: {existing_file.id}")
+            return {"status": True, **existing_file.model_dump()}
+
         # replace filename with uuid
         id = str(uuid.uuid4())
         name = filename
@@ -232,6 +247,7 @@ def upload_file_handler(
             FileForm(
                 **{
                     "id": id,
+                    "hash": file_hash,
                     "filename": name,
                     "path": file_path,
                     "data": {

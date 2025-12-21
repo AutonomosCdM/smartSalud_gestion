@@ -1838,7 +1838,11 @@ async def process_chat_response(
                     else:
                         response_data = response
 
-                    if "error" in response_data:
+                    # If response_data is a list (e.g. Gemini error proxy), unwrap it
+                    if isinstance(response_data, list) and len(response_data) > 0:
+                        response_data = response_data[0]
+
+                    if isinstance(response_data, dict) and "error" in response_data:
                         error = response_data.get("error")
 
                         if isinstance(error, dict):
@@ -1861,7 +1865,7 @@ async def process_chat_response(
                                 }
                             )
 
-                    if "selected_model_id" in response_data:
+                    if isinstance(response_data, dict) and "selected_model_id" in response_data:
                         Chats.upsert_message_to_chat_by_id_and_message_id(
                             metadata["chat_id"],
                             metadata["message_id"],
@@ -1870,7 +1874,7 @@ async def process_chat_response(
                             },
                         )
 
-                    choices = response_data.get("choices", [])
+                    choices = response_data.get("choices", []) if isinstance(response_data, dict) else []
                     if choices and choices[0].get("message", {}).get("content"):
                         content = response_data["choices"][0]["message"]["content"]
 

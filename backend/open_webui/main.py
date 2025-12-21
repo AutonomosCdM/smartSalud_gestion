@@ -548,17 +548,14 @@ class SPAStaticFiles(StaticFiles):
 
 print(
     rf"""
- ██████╗ ██████╗ ███████╗███╗   ██╗    ██╗    ██╗███████╗██████╗ ██╗   ██╗██╗
-██╔═══██╗██╔══██╗██╔════╝████╗  ██║    ██║    ██║██╔════╝██╔══██╗██║   ██║██║
-██║   ██║██████╔╝█████╗  ██╔██╗ ██║    ██║ █╗ ██║█████╗  ██████╔╝██║   ██║██║
-██║   ██║██╔═══╝ ██╔══╝  ██║╚██╗██║    ██║███╗██║██╔══╝  ██╔══██╗██║   ██║██║
-╚██████╔╝██║     ███████╗██║ ╚████║    ╚███╔███╔╝███████╗██████╔╝╚██████╔╝██║
- ╚═════╝ ╚═╝     ╚══════╝╚═╝  ╚═══╝     ╚══╝╚══╝ ╚══════╝╚═════╝  ╚═════╝ ╚═╝
+ ███████╗███╗   ███╗ █████╗ ██████╗ ████████╗██████╗  ██████╗  ██████╗
+ ██╔════╝████╗ ████║██╔══██╗██╔══██╗╚══██╔══╝██╔══██╗██╔═══██╗██╔════╝
+ ███████╗██╔████╔██║███████║██████╔╝   ██║   ██║  ██║██║   ██║██║     
+ ╚════██║██║╚██╔╝██║██╔══██║██╔══██╗   ██║   ██║  ██║██║   ██║██║     
+ ███████║██║ ╚═╝ ██║██║  ██║██║  ██║   ██║   ██████╔╝╚██████╔╝╚██████╗
+ ╚══════╝╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═════╝  ╚═════╝  ╚═════╝
 
-
-v{VERSION} - building the best AI user interface.
-{f"Commit: {WEBUI_BUILD_HASH}" if WEBUI_BUILD_HASH != "dev-build" else ""}
-https://github.com/open-webui/open-webui
+ v{VERSION} - Tu asistente médico inteligente.
 """
 )
 
@@ -579,6 +576,7 @@ async def lifespan(app: FastAPI):
     # log.info("Installing external dependencies of functions and tools...")
     # install_tool_and_function_dependencies()
 
+    # Moviendo inicialización de modelos aquí para evitar bloqueo en import
     # Moviendo inicialización de modelos aquí para evitar bloqueo en import
     try:
         app.state.ef = get_ef(
@@ -621,24 +619,26 @@ async def lifespan(app: FastAPI):
     asyncio.create_task(periodic_usage_pool_cleanup())
 
     if app.state.config.ENABLE_BASE_MODELS_CACHE:
-        await get_all_models(
-            Request(
-                # Creating a mock request object to pass to get_all_models
-                {
-                    "type": "http",
-                    "asgi.version": "3.0",
-                    "asgi.spec_version": "2.0",
-                    "method": "GET",
-                    "path": "/internal",
-                    "query_string": b"",
-                    "headers": Headers({}).raw,
-                    "client": ("127.0.0.1", 12345),
-                    "server": ("127.0.0.1", 80),
-                    "scheme": "http",
-                    "app": app,
-                }
-            ),
-            None,
+        asyncio.create_task(
+            get_all_models(
+                Request(
+                    # Creating a mock request object to pass to get_all_models
+                    {
+                        "type": "http",
+                        "asgi.version": "3.0",
+                        "asgi.spec_version": "2.0",
+                        "method": "GET",
+                        "path": "/internal",
+                        "query_string": b"",
+                        "headers": Headers({}).raw,
+                        "client": ("127.0.0.1", 12345),
+                        "server": ("127.0.0.1", 80),
+                        "scheme": "http",
+                        "app": app,
+                    }
+                ),
+                None,
+            )
         )
 
     yield
@@ -648,14 +648,14 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(
-    title="Open WebUI",
+    title="smartDoc",
     docs_url="/docs" if ENV == "dev" else None,
     openapi_url="/openapi.json" if ENV == "dev" else None,
     redoc_url=None,
     lifespan=lifespan,
 )
 
-# For Open WebUI OIDC/OAuth2
+# For smartDoc OIDC/OAuth2
 oauth_manager = OAuthManager(app)
 app.state.oauth_manager = oauth_manager
 
@@ -2027,7 +2027,7 @@ async def get_app_changelog():
 @app.get("/api/usage")
 async def get_current_usage(user=Depends(get_verified_user)):
     """
-    Get current usage statistics for Open WebUI.
+    Get current usage statistics for smartDoc.
     This is an experimental endpoint and subject to change.
     """
     try:

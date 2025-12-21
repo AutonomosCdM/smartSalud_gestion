@@ -1596,8 +1596,11 @@ def process_file(
                 file.id,
                 {"content": text_content},
             )
-            hash = calculate_sha256_string(text_content)
-            Files.update_file_hash_by_id(file.id, hash)
+            if not file.hash:
+                hash = calculate_sha256_string(text_content)
+                Files.update_file_hash_by_id(file.id, hash)
+            else:
+                hash = file.hash
 
             if request.app.state.config.BYPASS_EMBEDDING_AND_RETRIEVAL:
                 Files.update_file_data_by_id(file.id, {"status": "completed"})

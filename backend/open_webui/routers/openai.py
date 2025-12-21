@@ -131,7 +131,7 @@ async def get_headers_and_cookies(
         **(
             {
                 "HTTP-Referer": "https://openwebui.com/",
-                "X-Title": "Open WebUI",
+                "X-Title": "smartDoc",
             }
             if "openrouter.ai" in url
             else {}
@@ -335,7 +335,7 @@ async def speech(request: Request, user=Depends(get_verified_user)):
 
             raise HTTPException(
                 status_code=r.status_code if r else 500,
-                detail=detail if detail else "Open WebUI: Server Connection Error",
+                detail=detail if detail else "smartDoc: Server Connection Error",
             )
 
     except ValueError:
@@ -451,7 +451,19 @@ async def get_all_models_responses(request: Request, user: UserModel) -> list:
                 if connection_type:
                     model["connection_type"] = connection_type
 
-    log.debug(f"get_all_models:responses() {responses}")
+    # HARD FILTER: Only allow gemini-2.5-pro as requested by user
+    # filtered_responses = []
+    # for response in responses:
+    #     if isinstance(response, list):
+    #         filtered_responses.extend([m for m in response if m.get('id', '').endswith('gemini-flash-latest') or m.get('id', '').endswith('gemini-2.5-pro')])
+    #     elif isinstance(response, dict) and 'data' in response:
+    #          response['data'] = [m for m in response['data'] if m.get('id', '').endswith('gemini-flash-latest') or m.get('id', '').endswith('gemini-2.5-pro')]
+    #          if response['data']: # Only append if there are matching models
+    #             filtered_responses.append(response)
+    # 
+    # log.debug(f"get_all_models:responses() (FILTERED) {filtered_responses}")
+    # return filtered_responses
+    
     return responses
 
 
@@ -614,7 +626,7 @@ async def get_models(
                 # ClientError covers all aiohttp requests issues
                 log.exception(f"Client error: {str(e)}")
                 raise HTTPException(
-                    status_code=500, detail="Open WebUI: Server Connection Error"
+                    status_code=500, detail="smartDoc: Server Connection Error"
                 )
             except Exception as e:
                 log.exception(f"Unexpected error: {e}")
@@ -711,12 +723,12 @@ async def verify_connection(
             # ClientError covers all aiohttp requests issues
             log.exception(f"Client error: {str(e)}")
             raise HTTPException(
-                status_code=500, detail="Open WebUI: Server Connection Error"
+                status_code=500, detail="smartDoc: Server Connection Error"
             )
         except Exception as e:
             log.exception(f"Unexpected error: {e}")
             raise HTTPException(
-                status_code=500, detail="Open WebUI: Server Connection Error"
+                status_code=500, detail="smartDoc: Server Connection Error"
             )
 
 
@@ -896,6 +908,8 @@ async def generate_chat_completion(
             convert_logit_bias_input_to_json(payload["logit_bias"])
         )
 
+
+
     headers, cookies = await get_headers_and_cookies(
         request, url, key, api_config, metadata, user=user
     )
@@ -949,9 +963,12 @@ async def generate_chat_completion(
         else:
             try:
                 response = await r.json()
+                log.debug(f"generate_chat_completion:response_status={r.status}")
+                log.debug(f"generate_chat_completion:response_json={response}")
             except Exception as e:
-                log.error(e)
+                log.error(f"Error parsing JSON response: {e}")
                 response = await r.text()
+                log.debug(f"generate_chat_completion:response_text={response}")
 
             if r.status >= 400:
                 if isinstance(response, (dict, list)):
@@ -965,7 +982,7 @@ async def generate_chat_completion(
 
         raise HTTPException(
             status_code=r.status if r else 500,
-            detail="Open WebUI: Server Connection Error",
+            detail="smartDoc: Server Connection Error",
         )
     finally:
         if not streaming:
@@ -1047,7 +1064,7 @@ async def embeddings(request: Request, form_data: dict, user):
         log.exception(e)
         raise HTTPException(
             status_code=r.status if r else 500,
-            detail="Open WebUI: Server Connection Error",
+            detail="smartDoc: Server Connection Error",
         )
     finally:
         if not streaming:
@@ -1140,7 +1157,7 @@ async def proxy(path: str, request: Request, user=Depends(get_verified_user)):
         log.exception(e)
         raise HTTPException(
             status_code=r.status if r else 500,
-            detail="Open WebUI: Server Connection Error",
+            detail="smartDoc: Server Connection Error",
         )
     finally:
         if not streaming:

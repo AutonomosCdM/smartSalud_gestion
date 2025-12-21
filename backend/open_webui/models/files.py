@@ -210,6 +210,19 @@ class FilesTable:
                 for file in db.query(File).filter_by(user_id=user_id).all()
             ]
 
+    def get_file_by_hash_and_user_id(
+        self, hash: str, user_id: str
+    ) -> Optional[FileModel]:
+        with get_db() as db:
+            try:
+                file = db.query(File).filter_by(hash=hash, user_id=user_id).first()
+                if file:
+                    return FileModel.model_validate(file)
+                else:
+                    return None
+            except Exception:
+                return None
+
     def update_file_by_id(
         self, id: str, form_data: FileUpdateForm
     ) -> Optional[FileModel]:
