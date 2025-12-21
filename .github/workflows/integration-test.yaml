@@ -26,6 +26,8 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build and run Compose Stack
+        env:
+          WEBUI_SECRET_KEY: test-secret-key-for-ci
         run: |
           docker compose \
             --file docker-compose.yaml \
@@ -157,7 +159,9 @@ jobs:
         env:
           WEBUI_SECRET_KEY: secret-key
           GLOBAL_LOG_LEVEL: debug
+          DATA_DIR: /tmp/open-webui-data
         run: |
+          mkdir -p /tmp/open-webui-data
           cd backend
           uvicorn open_webui.main:app --port "8080" --forwarded-allow-ips '*' &
           UVICORN_PID=$!
