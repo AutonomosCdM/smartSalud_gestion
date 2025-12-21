@@ -1,72 +1,70 @@
-# 🛠️ Guía de Desarrollo Local Open WebUI
+# 🛠️ Guía de Desarrollo smartDoc
 
-## 🌍 Arquitectura Local
+## 🌍 Arquitectura del Proyecto
 
-Para simplificar el desarrollo y evitar problemas de CORS, utilizamos una arquitectura unificada servida por FastAPI:
+smartDoc es una plataforma médica basada en la arquitectura unificada de FastAPI + SvelteKit:
 
 *   **Backend (FastAPI)**: Puerto `8080`.
 *   **Frontend**: Servido estáticamente por el backend desde `build/`.
 
-🔥 **Puerto Principal**: `http://localhost:8080` (Usar este para todo)
+🔥 **Acceso Local**: [http://localhost:8080](http://localhost:8080)
 
 ---
 
-## 🚀 Inicio Rápido
+## 🚀 Inicio Rápido (Comando Global)
 
-Hemos creado un script de utilidad para iniciar el entorno correctamente:
+Hemos habilitado un comando global para simplificar el flujo de trabajo:
 
 ```bash
-./start_dev.sh
+smartdoc
+```
+o
+```bash
+smartDoc
 ```
 
-Este script se encarga de:
-1. Activar el entorno virtual Python.
-2. Definir `FRONTEND_BUILD_DIR` para que el backend sirva la UI.
-3. Iniciar el servidor Uvicorn en el puerto 8080.
+Este comando ejecuta `run_local.sh`, que realiza las siguientes tareas:
+1. **Verificación de Entorno**: Asegura que Python 3.11 y Node.js estén instalados.
+2. **Setup Automático**: Crea el entorno virtual (`.venv`) e instala dependencias si no existen.
+3. **Optimización de Frontend**: Verifica si hay un build existente; si no, compila la UI.
+4. **Lanzamiento**: Inicia el servidor y **abre automáticamente el navegador**.
+
+> [!TIP]
+> Usa `smartdoc --rebuild` para forzar la recompilación del frontend si has hecho cambios en la UI.
 
 ---
 
-## 📦 Instalación (Si empiezas desde cero)
+## 📦 Gestión de Dependencias
 
-1. **Backend**:
-   ```bash
-   python3.11 -m venv .venv
-   source .venv/bin/activate
-   pip install -e .
-   mkdir -p backend/data
-   ```
+### 🐍 Backend (Python)
+Se recomienda usar Python 3.11+. Las dependencias se gestionan in-place:
+```bash
+source .venv/bin/activate
+pip install -e .
+```
 
-2. **Frontend**:
-   ```bash
-   npm install --legacy-peer-deps
-   # Fix para dependencia faltante
-   npm install y-protocols --save-dev --legacy-peer-deps
-   npm run build
-   ```
+### 🎨 Frontend (SvelteKit)
+Usamos `npm` con flags específicos para compatibilidad:
+```bash
+npm install --legacy-peer-deps
+npm run build
+```
 
 ---
 
-## ⚠️ Notas Técnicas Importantes
+## 📂 Documentación Detallada
 
-### 1. Bloqueo de Inicialización (Fix Aplicado)
-Originalmente, Open WebUI bloqueaba la carga de Python al descargar modelos de embeddings (`get_ef`) en el nivel global.
-**Solución**: Se movió esta lógica al `lifespan` de FastAPI en `backend/open_webui/main.py`.
+Para guías más específicas, consulta nuestra carpeta [docs/smartdoc/](file:///Users/autonomos_dev/Projects/autonomos_ui/docs/smartdoc/):
 
-### 2. Frontend Build Injection
-El backend no detecta automáticamente la carpeta `frontend/` en modo paquete.
-**Solución**: Se debe inyectar la ruta del build compilado vía variable de entorno:
-`export FRONTEND_BUILD_DIR=$(pwd)/build`
-
-### 3. Puertos
-*   **8080**: Servidor Principal (API + Frontend Estático). **Usar este.**
-*   **5173** (Vite Dev Server): **NO USAR** a menos que configures proxies manuales. Causa problemas de CORS y sesión.
+*   [Guía Técnica](file:///Users/autonomos_dev/Projects/autonomos_ui/docs/smartdoc/SMARTDOC_TECHNICAL_GUIDE.md): Arquitectura, RAG y Modelos Gemini.
+*   [Guía de Usuario](file:///Users/autonomos_dev/Projects/autonomos_ui/docs/smartdoc/SMARTDOC_USER_GUIDE.md): Manual para personal clínico.
+*   [Auditoría de Telemetría](file:///Users/autonomos_dev/Projects/autonomos_ui/docs/smartdoc/AUDITORIA_TELEMETRIA.md): Detalles sobre privacidad y desactivación de tracking.
+*   [Solución de Problemas](file:///Users/autonomos_dev/Projects/autonomos_ui/TROUBLESHOOTING.md): Guía para resolver errores comunes.
 
 ---
 
-## 🐛 Solución de Problemas
+## ⚠️ Notas de Mantenimiento
 
-**El servidor inicia pero se queda "pensando"**:
-Revisa los logs. Es probable que esté descargando modelos de HuggingFace (`sentence-transformers`) por primera vez. Esto es normal y solo ocurre en el primer arranque.
-
-**Error "Frontend build directory not found"**:
-Asegúrate de haber ejecutado `npm run build` y de definir `export FRONTEND_BUILD_DIR=$(pwd)/build` antes de iniciar el backend (o usa `./start_dev.sh`).
+1. **Variables de Entorno**: El comando `smartdoc` ya configura automáticamente las API Keys de Gemini y los modelos por defecto. No necesitas un archivo `.env` manual para uso local básico.
+2. **Conflicto de Puertos**: El script intenta limpiar los puertos 8080, 5173 y 3000 antes de iniciar para evitar conflictos de "Address already in use".
+3. **Módulo ejecutable**: El paquete se puede ejecutar con `python -m open_webui serve` gracias al archivo `__main__.py`.
